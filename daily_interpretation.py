@@ -223,7 +223,28 @@ def generate_daily_content(date_str, timing, vectors, forces, attempt=0):
     q_list = questions_map.get(max_key, ["今日你最需要覺察的，是前進的速度，還是維持穩定的基石？"])
     question = q_list[attempt % len(q_list)]
     
-    # 7. Summary (keep under 250 characters)
+    # 7. Resolve Contradictions (Tension Resolver)
+    synthesis_text = "【天時解構】天地能量運作和諧，無顯著阻力與摩擦。適合順勢而為，按部就班推進各項既定計劃。"
+    u = vectors.get("uncertainty", 0.0)
+    g = vectors.get("generation", 0.0)
+    t = vectors.get("transformation", 0.0)
+    s = vectors.get("stabilization", 0.0)
+    e = vectors.get("expansion", 0.0)
+    c = vectors.get("contraction", 0.0)
+    d = vectors.get("disruption", 0.0)
+    
+    if g > 0.4 and u > 0.4:
+        synthesis_text = "【天時解構】「建立」與「模糊」並存：在此模糊局勢下，不宜強行建構大型、剛性、不可逆的系統；相反，此時特別適合「小步快跑、靈活試錯」的實驗性建立，先以輕量框架測試環境，隨時保持調整空間。"
+    elif s > 0.4 and t > 0.4:
+        synthesis_text = "【天時解構】「穩定」與「調整」拉扯：即「核心不變，邊緣靈活」。應堅守底層的基本盤與核心原則，但對於具體的執行路徑與戰術方法，則應保持高度彈性，隨形勢主動微調。"
+    elif e > 0.4 and (c > 0.4 or u > 0.4):
+        synthesis_text = "【天時解構】「推進」與「收斂/模糊」並存：提示「定向突破」。此時切忌全線鋪開盲目衝刺，而應將資源收束，集中於局部安全地帶進行精準突破，其餘大部分領域則應收緊邊界、作防禦保留。"
+    elif g > 0.4 and d > 0.4:
+        synthesis_text = "【天時解構】「建立」與「瓦解」交織：即「破舊立新」。新結構的誕生必須建立在對陳舊阻礙的果斷切割之上，主動清理失效關係與累贅，才能釋放出真正有生命力的新秩序空間。"
+    elif t > 0.4 and u > 0.4:
+        synthesis_text = "【天時解構】「調整」與「模糊」重疊：此時大氣處於深度的過渡交接點。暫時缺乏清晰的方向信號，所有的調整都應以「保留彈性與容錯」為第一考量，切忌在此時鎖定剛性決策。"
+
+    # 8. Summary (keep under 250 characters)
     summary_text = (
         f"今日主要方向：{rhythm}。支持力量：{prim_force}。限制力量：{constraint_force}。"
         f"運行節奏：{rhythm_reason}。天地層面呈現「{rhythm}」大氣，建議順應此運行節律，"
@@ -241,7 +262,8 @@ def generate_daily_content(date_str, timing, vectors, forces, attempt=0):
         "group_obs": group_obs,
         "person_obs": person_obs,
         "question": question,
-        "summary": summary_text
+        "summary": summary_text,
+        "synthesis": synthesis_text
     }
     
     return content

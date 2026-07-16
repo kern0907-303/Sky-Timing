@@ -104,12 +104,15 @@ def run_publish_pipeline(date_str, timezone="Asia/Taipei", city="Taipei"):
 *   潛在限制條件：{forces['constraint_force']}
 *   當日運行節奏：{content['daily_rhythm']} ({content['daily_rhythm_reason']})
 
-### 三、三層觀察
+### 三、天時衝突與解構 (Tension Synthesis)
+> {content['synthesis']}
+
+### 四、三層觀察
 *   **天地層**：{content['tian_obs']}
 *   **群體層**：{content['group_obs']}
 *   **個人層**：{content['person_obs']}
 
-### 四、今日觀察問題
+### 五、今日觀察問題
 *   {content['question']}
 """
     with open(web_md_path, "w", encoding="utf-8") as f:

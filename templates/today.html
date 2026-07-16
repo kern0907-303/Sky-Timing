@@ -81,6 +81,11 @@
                         <span class="force-val rhythm-badge">{{ state.daily_rhythm }}</span>
                     </div>
                 </div>
+                {% if state.content.synthesis %}
+                <div class="synthesis-block">
+                    <p class="synthesis-text">{{ state.content.synthesis }}</p>
+                </div>
+                {% endif %}
             </div>
         </section>
 

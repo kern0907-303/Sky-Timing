@@ -682,6 +682,22 @@ body {
     animation: fadeIn 0.4s ease-out;
 }
 
+.synthesis-block {
+    margin-top: 1.5rem;
+    padding: 1.2rem;
+    background: radial-gradient(ellipse at center, rgba(226, 192, 124, 0.04) 0%, transparent 80%), rgba(255, 255, 255, 0.01);
+    border-top: 1px dashed var(--gold-border);
+    border-bottom: 1px dashed var(--gold-border);
+    text-align: left;
+}
+
+.synthesis-text {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+    margin: 0;
+}
+
 /* Utilities */
 .hidden {
     display: none !important;
