@@ -115,7 +115,7 @@ def compute_semantic_vectors(timing_data):
         "stabilization": "穩定、固定、承載、維持",
         "circulation": "流動、交換、連結、傳遞",
         "contraction": "收斂、回收、沉澱、保存",
-        "transformation": "轉換、重組、過渡、改變",
+        "transformation": "架構調整、系統重組、軌道過渡",
         "disruption": "切割、瓦解、衝突、解除",
         "uncertainty": "模糊、變動、資訊不足、容錯降低"
     }

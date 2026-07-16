@@ -50,7 +50,7 @@ def generate_short_message(date_str, timing, vectors, forces, content_dict, dail
         f"今日主題：\n{keywords}\n\n"
         f"今日狀態：\n{status_sentences}\n\n"
         f"今日提醒：\n{reminder}\n\n"
-        f"今日觀察：\n{question}\n\n"
+        f"當日深度思考：\n{question}\n\n"
         f"完整內容：\n{daily_url}"
     )
     

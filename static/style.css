@@ -11,7 +11,7 @@
     --text-secondary: #9CA3AF;
     --text-muted: #6B7280;
     --font-serif: 'Noto Serif TC', serif;
-    --font-sans: 'Inter', 'Outfit', system-ui, -apple-system, sans-serif;
+    --font-sans: 'PingFang TC', 'STHeitiTC-Light', 'Microsoft JhengHei Light', 'Inter', 'Outfit', system-ui, -apple-system, sans-serif;
     --green-accent: #34D399;
     --red-accent: #F87171;
 }
@@ -28,6 +28,7 @@ body {
                       radial-gradient(circle at 10% 30%, rgba(13, 23, 49, 0.4) 0%, transparent 50%);
     color: var(--text-primary);
     font-family: var(--font-sans);
+    font-weight: 300;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     padding-bottom: 2rem;

@@ -33,7 +33,7 @@ def calculate_daily_timing(date_str, timezone_str="Asia/Taipei", city_str="Taipe
     return {
         "solar_date": date_str,
         "lunar_date": lunar.toString(),
-        "solar_term": lunar.getJieQi() or "None",
+        "solar_term": lunar.getJieQi() or (prev_jq.getName() if prev_jq else "None"),
         "prev_jieqi": prev_jq.getName() if prev_jq else "None",
         "next_jieqi": next_jq.getName() if next_jq else "None",
         "month_command": lunar.getSeason() + "月令",

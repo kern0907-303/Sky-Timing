@@ -41,9 +41,9 @@ def generate_daily_content(date_str, timing, vectors, forces, attempt=0):
             "天地動能放緩，適合將注意力收回，進行內部盤點與減法整理。"
         ]),
         "transformation": ("調整", [
-            "舊秩序正在過渡，比起盲目固守，更適合小幅修正方向。",
-            "今日氣流處於過渡交接點，適宜主動微調架構以應對外部變化。",
-            "能量軌道正在切換，宜順應趨勢進行彈性調整，切忌頑固執念。"
+            "大氣處於系統軌道切換點，適合進行底層架構的微調與重組以保持彈性。",
+            "系統動能正進行結構性過渡，此時宜主動調整底層規則與方向以適應變化。",
+            "運行軌道正面臨結構性切換，應順應系統發展趨勢，彈性優化底層架構。"
         ]),
         "disruption": ("轉換", [
             "面臨清理與瓦解，適合打破不合時宜的舊架構，釋放包袱。",
@@ -174,8 +174,11 @@ def generate_daily_content(date_str, timing, vectors, forces, attempt=0):
     tianshen = timing["zhishen"]
     jianchu = timing["jianchu"]
     tian_obs = f"天地層：當前運行至{timing['solar_term']}節氣，月令以【{timing['yueling_wuxing']}】氣場主導，本日值神為【{tianshen}】、建除十二神為【{jianchu}】。這代表自然界處於「{rhythm_reason[:-1]}」的背景週期中。"
-    group_obs = f"群體層：群體活動表現出「{prim_force}」的普遍張力。成員容易感到溝通成本{('增加' if vectors['uncertainty'] > 0.4 or vectors['disruption'] > 0.4 else '平緩')}，適合透過「{rhythm}」的節奏取得團隊共識。"
-    person_obs = f"個人層：注意力容易集中在「{sec_force}」相關事務。可能會感覺到自己被兩種力量拉扯（{contradiction}），應學會順應天時節奏，不急於強行求成。"
+    group_obs = f"環境層：環境表現出「{prim_force}」的普遍張力。容易感到溝通成本{('增加' if vectors['uncertainty'] > 0.4 or vectors['disruption'] > 0.4 else '平緩')}，適合透過「{rhythm}」的節奏來對接外部環境。"
+    if contradiction == "力量分布平緩，天地動能和諧。":
+        person_obs = f"個人層：注意力將聚焦在「{sec_force}」相關事務。當前能量運作和諧，無顯著阻力與拉扯感，適合順勢推進既定計劃。"
+    else:
+        person_obs = f"個人層：注意力容易集中在「{sec_force}」相關事務。可能會感覺到自己被兩種力量拉扯（{contradiction}），應學會順勢借力，不急於強行推進。"
     
     # 6. Reflection question
     questions_map = {
