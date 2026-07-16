@@ -244,17 +244,33 @@
                     <div class="form-group">
                         <label for="eventType">事件類型</label>
                         <select id="eventType">
-                            <optgroup label="事業與工作">
+                            <optgroup label="💼 事業與工作">
                                 <option value="啟動">啟動新計畫 / 開工 / 開店</option>
                                 <option value="商談">重要商談 / 會議 / 談判</option>
                                 <option value="合約">簽約合作 / 交易往來</option>
                                 <option value="調整">架構整頓 / 策略調整</option>
                                 <option value="收尾">項目收尾 / 結案整理</option>
                             </optgroup>
-                            <optgroup label="感情與關係">
+                            <optgroup label="❤️ 感情與關係">
                                 <option value="情感約會">告白 / 約會 / 關係推進</option>
                                 <option value="關係溝通">深度溝通 / 衝突排解</option>
                                 <option value="關係斷捨離">關係切割 / 告別與整理</option>
+                            </optgroup>
+                            <optgroup label="🎨 創作與靈感">
+                                <option value="靈感寫作">寫作 / 設計 / 靈感創作</option>
+                                <option value="靈感企劃">腦力激盪 / 創意提案</option>
+                            </optgroup>
+                            <optgroup label="💰 財富與投資">
+                                <option value="大宗交易">大宗採購 / 資產配置</option>
+                                <option value="收支結算">財務審查 / 收回欠款</option>
+                            </optgroup>
+                            <optgroup label="🏡 居家與生活">
+                                <option value="大掃除">空間淨化 / 垃圾斷捨離</option>
+                                <option value="移徙入宅">搬家遷徙 / 空間調整</option>
+                            </optgroup>
+                            <optgroup label="🌱 學習與修行">
+                                <option value="冥想修行">禪修冥想 / 獨處沉澱</option>
+                                <option value="讀書學習">技能學習 / 深度閱讀</option>
                             </optgroup>
                         </select>
                     </div>
@@ -273,6 +289,26 @@
         <!-- User Feedback Section -->
         <section class="card feedback-section">
             <h2>今天的狀態，你有感覺嗎？</h2>
+            <p class="feedback-subtitle">💡 記錄每日的真實身心狀態與遭遇，校準您的個人天時天線，積累屬於您的天時共鳴指數。</p>
+            
+            <details class="feedback-guide">
+                <summary>💡 這能為我帶來什麼好處？（點擊展開說明）</summary>
+                <div class="guide-content">
+                    <div class="benefit-item">
+                        <h4>🎯 1. 校準直覺與決策模式（決策指南）</h4>
+                        <p>當您的<strong>共鳴率高於 80%</strong>，代表您目前與天地氣流高度同頻，此時您可以大膽信任您的「直覺」做決策。反之，若<strong>共鳴率較低</strong>，代表您正處於獨立的個人軌道上，決策時應更依賴理性分析與數據，而非憑直覺衝動行事。</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>📅 2. 發現您的「天時主場」（個人強勢氣場）</h4>
+                        <p>每個人都有自己的天性。持續記錄後，您能發現自己在哪種天時（如：建除神中的「建/成/開」或八大能量中的「擴張/收斂」）最容易點選「有感」。這能幫您找出最適合自己發揮、勝率最高的「主場天時」。</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>🔒 3. 絕對隱私的個人身心日記</h4>
+                        <p>所有記錄與您隨手寫下的文字觀察<strong>完全保存在您本地的瀏覽器中</strong>，沒有人能偷看。在保護個資的同時，為您提供一個完全放鬆、觀察自我能量起伏的安靜角落。</p>
+                    </div>
+                </div>
+            </details>
+
             <div class="feedback-buttons">
                 <button type="button" class="btn-feedback" id="btn-resonant" onclick="selectReaction('resonant')">有感</button>
                 <button type="button" class="btn-feedback" id="btn-partial" onclick="selectReaction('partial')">部分有感</button>
@@ -281,10 +317,30 @@
             <div class="form-group observation-group hidden" id="observationGroup">
                 <label for="feedbackObs">今天你觀察到什麼？（選填，最多200字）</label>
                 <textarea id="feedbackObs" maxlength="200" placeholder="分享您今天的實際遭遇或觀察..."></textarea>
-                <button type="button" onclick="submitFeedback()" class="btn-gold">送出回饋</button>
+                <button type="button" onclick="submitFeedback()" class="btn-gold" id="btn-submit-feedback">送出回饋</button>
             </div>
             <div id="feedbackResult" class="feedback-result-container hidden">
                 <p id="feedbackResultText"></p>
+            </div>
+            
+            <!-- Local Timing Resonance Analyzer -->
+            <div id="resonanceStats" class="resonance-stats-container hidden">
+                <hr class="stats-divider">
+                <h3>📊 您的個人天時共鳴分析</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-num" id="statTotal">0</span>
+                        <span class="stat-label">累計觀測天數</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-num" id="statRate">0%</span>
+                        <span class="stat-label">天時共鳴率</span>
+                    </div>
+                </div>
+                <p class="stats-insight" id="statsInsight">載入中...</p>
+                <div class="history-list" id="feedbackHistoryList">
+                    <!-- Recent entries will go here -->
+                </div>
             </div>
         </section>
     </main>
@@ -294,6 +350,14 @@
         <p class="footer-notice">本網站所呈現之天時為天地運行背景狀態，僅供決策輔助，不構成吉凶必然性保證。</p>
     </footer>
 
-    <script src="../app_static_override.js"></script>
+    <script>
+        const DAILY_TIMING = {
+            jianchu: "闭",
+            has_clash: false,
+            primary_force: "收斂、回收、沉澱、保存"
+        };
+    </script>
+    <script src="../static/app.js"></script>
+<script src="../app_static_override.js"></script>
 </body>
 </html>
