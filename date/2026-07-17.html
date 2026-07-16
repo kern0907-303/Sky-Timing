@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欽天監｜指定日期天時</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="logo">欽天監 <span>今日天時</span></div>
+        <nav class="app-nav">
+            <a href="../index.html">今日天時</a>
+            <a href="../archive.html">歷史檔案</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Date Selector -->
+        <section class="date-selector-section">
+            <div class="current-date-info">
+                <h1>2026-07-17 <span class="date-badge">查詢結果</span></h1>
+                <p class="lunar-calendar-text">二〇二六年六月初四 · None</p>
+            </div>
+            <div class="selector-controls">
+                <input type="date" id="dateQuery" value="2026-07-17">
+                <button onclick="queryDate()" class="btn-gold">查詢日期</button>
+            </div>
+        </section>
+
+        <!-- One Line Description -->
+        <section class="card one-liner-card">
+            <div class="card-accent"></div>
+            <h2>當日觀測</h2>
+            <p class="one-liner-text">「 今日天地運行以【收斂】為軸心，氣場趨於內省與沉澱，適合整理歷史遺留問題，做好結構收尾。  」</p>
+            <div class="keywords-row">
+                
+                <span class="keyword-tag">收斂</span>
+                
+                <span class="keyword-tag">穩固</span>
+                
+                <span class="keyword-tag">瓦解</span>
+                
+            </div>
+        </section>
+
+        <!-- Semantic Vector Charts -->
+        <section class="grid-2">
+            <div class="card">
+                <h2>天時能量向量 (Semantic Vectors)</h2>
+                <div class="vector-chart">
+                    
+                    <div class="vector-bar-row">
+                        <span class="vector-label">生成 (建立)</span>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 30.0%"></div>
+                        </div>
+                        <span class="vector-value">0.3</span>
+                    </div>
+                    
+                    <div class="vector-bar-row">
+                        <span class="vector-label">擴張 (推動)</span>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 30.0%"></div>
+                        </div>
+                        <span class="vector-value">0.3</span>
+                    </div>
+                    
+                    <div class="vector-bar-row">
+                        <span class="vector-label">穩定 (承載)</span>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 50.0%"></div>
+                        </div>
+                        <span class="vector-value">0.5</span>
+                    </div>
+                    
+                    <div class="vector-bar-row">
+                        <span class="vector-label">流動 (對接)</span>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 30.0%"></div>
+                        </div>
+                        <span class="vector-value">0.3</span>
+                    </div>
+                    
+                    <div class="vector-bar-row">
+                        <span class="vector-label">收斂 (沉澱)</span>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 80.0%"></div>
+                        </div>
+                        <span class="vector-value">0.8</span>
+                    </div>
+                    
+                    <div class="vector-bar-row">
+                        <span class="vector-label">轉換 (調整)</span>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 30.0%"></div>
+                        </div>
+                        <span class="vector-value">0.3</span>
+                    </div>
+                    
+                    <div class="vector-bar-row">
+                        <span class="vector-label">瓦解 (破缺)</span>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 50.0%"></div>
+                        </div>
+                        <span class="vector-value">0.5</span>
+                    </div>
+                    
+                    <div class="vector-bar-row">
+                        <span class="vector-label">不確定 (觀察)</span>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 30.0%"></div>
+                        </div>
+                        <span class="vector-value">0.3</span>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- Summary & Forces -->
+            <div class="card">
+                <h2>天地運行主軸</h2>
+                <div class="forces-info">
+                    <div class="force-item">
+                        <span class="force-title">核心推動力量</span>
+                        <span class="force-val gold-text">收斂、回收、沉澱、保存</span>
+                    </div>
+                    <div class="force-item">
+                        <span class="force-title">次要支持力量</span>
+                        <span class="force-val">穩定、固定、承載、維持</span>
+                    </div>
+                    <div class="force-item">
+                        <span class="force-title">潛在阻力與限制</span>
+                        <span class="force-val">穩定、固定、承載、維持</span>
+                    </div>
+                    <div class="force-item">
+                        <span class="force-title">當日運行節奏</span>
+                        <span class="force-val rhythm-badge">收斂</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Support and Constraints List -->
+        <section class="grid-2">
+            <div class="card support-card">
+                <h2>當日推動力量 (Support)</h2>
+                <ul class="clean-list">
+                    
+                    <li><span class="dot-green"></span> 穩定承載的條件到位，利於長線規劃。</li>
+                    
+                </ul>
+            </div>
+            <div class="card constraint-card">
+                <h2>當日限制力量 (Constraint)</h2>
+                <ul class="clean-list">
+                    
+                    <li><span class="dot-red"></span> 面臨局部結構的摩擦、破缺或舊物瓦解。</li>
+                    
+                    <li><span class="dot-red"></span> 外在推力減弱，面臨推進緩慢的收縮阻力。</li>
+                    
+                </ul>
+            </div>
+        </section>
+
+        <!-- Three Tier Observations -->
+        <section class="card">
+            <h2>天地／人間三層觀察</h2>
+            <div class="observation-tiers">
+                <div class="tier-block">
+                    <h3>天地層 (Astro)</h3>
+                    <p>天地層：當前運行至None節氣，月令以【木土】氣場主導，本日值神為【白虎】、建除十二神為【收】。這代表自然界處於「氣場趨於內省與沉澱，適合整理歷史遺留問題，做好結構收尾」的背景週期中。</p>
+                </div>
+                <div class="tier-block">
+                    <h3>群體層 (Social)</h3>
+                    <p>群體層：群體活動表現出「收斂、回收、沉澱、保存」的普遍張力。成員容易感到溝通成本增加，適合透過「收斂」的節奏取得團隊共識。</p>
+                </div>
+                <div class="tier-block">
+                    <h3>個人層 (Personal)</h3>
+                    <p>個人層：注意力容易集中在「穩定、固定、承載、維持」相關事務。可能會感覺到自己被兩種力量拉扯（），應學會順應天時節奏，不急於強行求成。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Level 3: Astro Details Cards (Folded) -->
+        <details class="astro-details-fold">
+            <summary class="btn-outline fold-summary">展開天時學術結構資料 (Level 3)</summary>
+            <div class="card astro-details-card-inside">
+                <h2>當日曆法結構</h2>
+                <div class="astro-details-grid">
+                    <div class="astro-card">
+                        <span class="a-title">建除十二神</span>
+                        <span class="a-val">收</span>
+                    </div>
+                    <div class="astro-card">
+                        <span class="a-title">黃黑值神</span>
+                        <span class="a-val">白虎</span>
+                    </div>
+                    <div class="astro-card">
+                        <span class="a-title">二十八宿</span>
+                        <span class="a-val">鬼</span>
+                    </div>
+                    <div class="astro-card">
+                        <span class="a-title">干支</span>
+                        <span class="a-val">壬辰日</span>
+                    </div>
+                    <div class="astro-card">
+                        <span class="a-title">五行納音</span>
+                        <span class="a-val">长流水</span>
+                    </div>
+                    <div class="astro-card">
+                        <span class="a-title">沖煞</span>
+                        <span class="a-val">(丙戌)狗</span>
+                    </div>
+                </div>
+            </div>
+        </details>
+
+        <!-- Daily Reflection Question -->
+        <section class="card question-card">
+            <h2>當日觀察問題 (Reflection)</h2>
+            <p class="question-text">「 收尾與沉澱的過程中，你是在遺憾失去，還是在為新種子騰出空間？ 」</p>
+        </section>
+
+        <!-- Ask timing relation - Secondary Feature -->
+        <section class="card ask-section">
+            <h2>用當日天時看一件事</h2>
+            <p class="section-desc">輸入您計畫執行的特定事務，系統將依據當前能量狀態分析關聯與建議節奏。</p>
+            <div class="ask-trigger-container">
+                <button onclick="toggleAskForm()" class="btn-outline">展開問事面板</button>
+            </div>
+            <div id="askForm" class="ask-form-hidden">
+                <div class="form-group">
+                    <label for="actionInput">我正在考慮什麼？</label>
+                    <input type="text" id="actionInput" placeholder="例如：新專案正式開工、行銷企劃上線、重大簽約會議">
+                </div>
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label for="eventType">事件類型</label>
+                        <select id="eventType">
+                            <option value="啟動">啟動</option>
+                            <option value="發布">上線/發布</option>
+                            <option value="簽約">簽約/正式合作</option>
+                            <option value="重要會議">重要會議/談判</option>
+                            <option value="調整">策略調整</option>
+                            <option value="收尾">項目收尾/結束</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="constraintInput">目前最大限制</label>
+                        <input type="text" id="constraintInput" placeholder="例如：時間壓力大、團隊人力不足、預算吃緊">
+                    </div>
+                </div>
+                <button onclick="submitAskQuery()" class="btn-gold">分析天時關聯</button>
+                <div id="askResult" class="ask-result-container hidden">
+                    <p id="askResultText"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- User Feedback Section -->
+        <section class="card feedback-section">
+            <h2>今天的狀態，你有感覺嗎？</h2>
+            <div class="feedback-buttons">
+                <button type="button" class="btn-feedback" id="btn-resonant" onclick="selectReaction('resonant')">有感</button>
+                <button type="button" class="btn-feedback" id="btn-partial" onclick="selectReaction('partial')">部分有感</button>
+                <button type="button" class="btn-feedback" id="btn-not_resonant" onclick="selectReaction('not_resonant')">沒有感覺</button>
+            </div>
+            <div class="form-group observation-group hidden" id="observationGroup">
+                <label for="feedbackObs">今天你觀察到什麼？（選填，最多200字）</label>
+                <textarea id="feedbackObs" maxlength="200" placeholder="分享您今天的實際遭遇或觀察..."></textarea>
+                <button type="button" onclick="submitFeedback()" class="btn-gold">送出回饋</button>
+            </div>
+            <div id="feedbackResult" class="feedback-result-container hidden">
+                <p id="feedbackResultText"></p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <p>© 2026 欽天監今日天時 · 運行於真實前瞻性觀測網絡</p>
+        <p class="footer-notice">本網站所呈現之天時為天地運行背景狀態，僅供決策輔助，不構成吉凶必然性保證。</p>
+    </footer>
+
+    <script src="../app_static_override.js"></script>
+</body>
+</html>
