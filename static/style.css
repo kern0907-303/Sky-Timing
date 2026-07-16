@@ -1,0 +1,723 @@
+/* CSS Design System for Qin Tian Jian 今日天時 MVP */
+
+:root {
+    --bg-dark: #050A18;
+    --bg-card: rgba(13, 23, 49, 0.65);
+    --gold: #E2C07C;
+    --gold-hover: #D4AF37;
+    --gold-border: rgba(226, 192, 124, 0.2);
+    --gold-border-bright: rgba(226, 192, 124, 0.4);
+    --text-primary: #F3F4F6;
+    --text-secondary: #9CA3AF;
+    --text-muted: #6B7280;
+    --font-serif: 'Noto Serif TC', serif;
+    --font-sans: 'Inter', 'Outfit', system-ui, -apple-system, sans-serif;
+    --green-accent: #34D399;
+    --red-accent: #F87171;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-dark);
+    background-image: radial-gradient(circle at 50% 0%, rgba(226, 192, 124, 0.05) 0%, transparent 70%),
+                      radial-gradient(circle at 10% 30%, rgba(13, 23, 49, 0.4) 0%, transparent 50%);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    padding-bottom: 2rem;
+}
+
+/* Header & Nav */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid rgba(226, 192, 124, 0.1);
+    background: rgba(5, 10, 24, 0.85);
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: 2px;
+}
+
+.logo span {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--gold);
+    margin-left: 0.5rem;
+    border-left: 1px solid rgba(226, 192, 124, 0.3);
+    padding-left: 0.5rem;
+}
+
+.app-nav {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.app-nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+    font-weight: 500;
+}
+
+.app-nav a:hover, .app-nav a.active {
+    color: var(--gold);
+}
+
+/* Container */
+.container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+/* Date Selector Section */
+.date-selector-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.current-date-info h1 {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 0.3rem;
+}
+
+.date-badge {
+    font-size: 0.8rem;
+    font-family: var(--font-sans);
+    background: rgba(226, 192, 124, 0.15);
+    color: var(--gold);
+    border: 1px solid var(--gold-border);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    vertical-align: middle;
+    margin-left: 0.5rem;
+}
+
+.lunar-calendar-text {
+    color: var(--gold);
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.selector-controls {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.selector-controls input[type="date"] {
+    background: var(--bg-card);
+    border: 1px solid var(--gold-border);
+    color: var(--text-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.selector-controls input[type="date"]::picker-indicator {
+    filter: invert(1);
+}
+
+.selector-controls input[type="date"]:focus {
+    border-color: var(--gold);
+}
+
+/* Buttons */
+.btn-gold {
+    background: var(--gold);
+    color: #000;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn-gold:hover {
+    background: var(--gold-hover);
+    transform: translateY(-1px);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold-border);
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.btn-outline:hover {
+    background: rgba(226, 192, 124, 0.08);
+    border-color: var(--gold);
+}
+
+/* Cards */
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--gold-border);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.one-liner-card {
+    border-left: 4px solid var(--gold);
+}
+
+.card h2 {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+    border-left: 2px solid var(--gold);
+    padding-left: 0.75rem;
+}
+
+.one-liner-text {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-serif);
+}
+
+.keywords-row {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.keyword-tag {
+    background: rgba(226, 192, 124, 0.08);
+    color: var(--gold);
+    border: 1px solid var(--gold-border);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+/* Grid Layouts */
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Vector chart bars */
+.vector-bar-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.vector-label {
+    width: 90px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.bar-container {
+    flex-grow: 1;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    margin: 0 1rem;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, rgba(226, 192, 124, 0.3) 0%, var(--gold) 100%);
+    border-radius: 4px;
+}
+
+.vector-value {
+    font-size: 0.85rem;
+    color: var(--gold);
+    font-weight: 600;
+    width: 30px;
+    text-align: right;
+}
+
+/* Forces details info */
+.forces-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.force-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 0.6rem;
+}
+
+.force-title {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.force-val {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.gold-text {
+    color: var(--gold);
+    font-weight: 600;
+}
+
+.rhythm-badge {
+    background: rgba(226, 192, 124, 0.15);
+    color: var(--gold);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    border: 1px solid var(--gold-border);
+}
+
+/* Lists */
+.clean-list {
+    list-style: none;
+}
+
+.clean-list li {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+}
+
+.dot-green, .dot-red {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin-right: 0.75rem;
+}
+
+.dot-green {
+    background-color: var(--green-accent);
+}
+
+.dot-red {
+    background-color: var(--red-accent);
+}
+
+/* Observation Tiers */
+.tier-block {
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    padding-bottom: 1rem;
+}
+
+.tier-block:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.tier-block h3 {
+    font-size: 0.9rem;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.tier-block p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+/* Astro details grid cards */
+.astro-details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 1rem;
+}
+
+.astro-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.a-title {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+}
+
+.a-val {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Reflection Question card */
+.question-card {
+    border-top: 1px solid var(--gold-border-bright);
+    background: radial-gradient(ellipse at center, rgba(226, 192, 124, 0.03) 0%, transparent 80%), var(--bg-card);
+}
+
+.question-text {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: var(--gold);
+    text-align: center;
+    line-height: 1.8;
+}
+
+/* Ask timing relation secondary section */
+.ask-section {
+    border-style: dashed;
+}
+
+.section-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.ask-trigger-container {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.ask-form-hidden {
+    display: none;
+    margin-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 1.5rem;
+}
+
+.ask-form-visible {
+    display: block;
+    margin-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.form-group input, .form-group select {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--gold-border);
+    color: var(--text-primary);
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus, .form-group select:focus {
+    border-color: var(--gold);
+}
+
+.ask-result-container {
+    margin-top: 1.5rem;
+    padding: 1.2rem;
+    background: rgba(226, 192, 124, 0.05);
+    border: 1px solid var(--gold-border);
+    border-radius: 8px;
+    animation: fadeIn 0.4s ease-out;
+}
+
+#askResultText {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+    white-space: pre-line;
+}
+
+/* Archives list design */
+.archive-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.archive-header h1 {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.archive-item-card {
+    background: var(--bg-card);
+    border: 1px solid var(--gold-border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: border-color 0.3s;
+}
+
+.archive-item-card:hover {
+    border-color: var(--gold-border-bright);
+}
+
+.archive-date-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.archive-date {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.archive-rhythm-badge {
+    font-size: 0.8rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+}
+
+.archive-summary {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.btn-text-gold {
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.btn-text-gold:hover {
+    color: var(--gold-hover);
+}
+
+/* Footer styling */
+.app-footer {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    border-top: 1px solid rgba(226, 192, 124, 0.05);
+    margin-top: 4rem;
+}
+
+.app-footer p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.footer-notice {
+    font-size: 0.75rem !important;
+    max-width: 600px;
+    margin: 0.5rem auto 0 auto;
+}
+/* Level 3 Details Fold styling */
+.astro-details-fold {
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.fold-summary {
+    list-style: none;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    padding: 0.8rem 1.5rem;
+    width: 100%;
+    display: block;
+    outline: none;
+}
+
+.fold-summary::-webkit-details-marker {
+    display: none;
+}
+
+.astro-details-card-inside {
+    margin-top: 1rem;
+    background: var(--bg-card);
+    border: 1px solid var(--gold-border);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Feedback Section styling */
+.feedback-section {
+    border-color: rgba(226, 192, 124, 0.15);
+}
+
+.feedback-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+}
+
+.btn-feedback {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--gold-border);
+    color: var(--text-secondary);
+    padding: 0.6rem 1.8rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.btn-feedback:hover {
+    border-color: var(--gold);
+    color: var(--text-primary);
+    background: rgba(226, 192, 124, 0.05);
+}
+
+.btn-feedback.selected {
+    background: var(--gold);
+    color: #000;
+    border-color: var(--gold);
+    font-weight: 600;
+    box-shadow: 0 2px 10px rgba(226, 192, 124, 0.2);
+}
+
+.observation-group {
+    margin-top: 1.5rem;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.observation-group textarea {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--gold-border);
+    color: var(--text-primary);
+    padding: 0.8rem;
+    border-radius: 8px;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    resize: vertical;
+    min-height: 80px;
+    outline: none;
+    margin-bottom: 1rem;
+    transition: border-color 0.3s;
+}
+
+.observation-group textarea:focus {
+    border-color: var(--gold);
+}
+
+.feedback-result-container {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(226, 192, 124, 0.05);
+    border: 1px solid var(--gold-border);
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    animation: fadeIn 0.4s ease-out;
+}
+
+/* Utilities */
+.hidden {
+    display: none !important;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .app-header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.2rem 1.5rem;
+    }
+    
+    .current-date-info h1 {
+        font-size: 1.8rem;
+    }
+    
+    .date-selector-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .selector-controls {
+        width: 100%;
+    }
+    
+    .selector-controls input[type="date"] {
+        flex-grow: 1;
+    }
+    
+    .card {
+        padding: 1.5rem;
+    }
+}

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>欽天監｜今日天時分享卡</title>
+    <style>
+        :root {
+            --bg-dark: #050A18;
+            --gold: #E2C07C;
+            --gold-border: rgba(226, 192, 124, 0.25);
+            --text-primary: #F3F4F6;
+            --text-secondary: #9CA3AF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 1080px;
+            height: 1350px;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(226, 192, 124, 0.08) 0%, transparent 60%),
+                radial-gradient(circle at 50% 100%, rgba(226, 192, 124, 0.03) 0%, transparent 60%);
+            color: var(--text-primary);
+            font-family: 'PingFang TC', 'Heiti TC', 'Noto Serif TC', serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 90px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Gold thin double frame */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            bottom: 40px;
+            left: 40px;
+            right: 40px;
+            border: 1px solid var(--gold-border);
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            top: 48px;
+            bottom: 48px;
+            left: 48px;
+            right: 48px;
+            border: 1px solid rgba(226, 192, 124, 0.1);
+            pointer-events: none;
+        }
+
+        /* Top Header */
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(226, 192, 124, 0.15);
+            padding-bottom: 25px;
+        }
+
+        .brand-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: 6px;
+            color: var(--text-primary);
+        }
+
+        .brand-subtitle {
+            font-size: 24px;
+            color: var(--gold);
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+
+        /* Main Content */
+        .card-body {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .date-display {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 72px;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .lunar-display {
+            font-size: 28px;
+            color: var(--gold);
+            letter-spacing: 4px;
+            margin-bottom: 80px;
+        }
+
+        .one-liner-container {
+            width: 100%;
+            padding: 50px;
+            background: rgba(226, 192, 124, 0.03);
+            border: 1px dashed var(--gold-border);
+            border-radius: 16px;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .one-liner-text {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 42px;
+            line-height: 1.8;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* Keywords Row */
+        .keywords-row {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .keyword-tag {
+            background: rgba(226, 192, 124, 0.08);
+            border: 1px solid var(--gold-border);
+            color: var(--gold);
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-size: 24px;
+            letter-spacing: 2px;
+        }
+
+        /* Rhythm section */
+        .rhythm-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 26px;
+            color: var(--text-secondary);
+        }
+
+        .rhythm-badge {
+            background: rgba(226, 192, 124, 0.18);
+            color: var(--gold);
+            border: 1px solid var(--gold-border);
+            padding: 5px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 26px;
+        }
+
+        /* Card Footer */
+        .card-footer {
+            border-top: 1px solid rgba(226, 192, 124, 0.1);
+            padding-top: 25px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            font-size: 20px;
+            color: var(--text-muted);
+        }
+
+        .footer-left {
+            color: var(--text-secondary);
+            letter-spacing: 1px;
+        }
+
+        .footer-right {
+            color: var(--gold);
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card-header">
+        <div class="brand-title">欽天監</div>
+        <div class="brand-subtitle">今日天時觀測</div>
+    </div>
+
+    <div class="card-body">
+        <div class="date-display">{{ date }}</div>
+        <div class="lunar-display">{{ lunar_date }} · {{ solar_term }}</div>
+
+        <div class="one-liner-container">
+            <p class="one-liner-text">「 {{ one_liner }} 」</p>
+        </div>
+
+        <div class="keywords-row">
+            {% for kw in keywords %}
+            <span class="keyword-tag">{{ kw }}</span>
+            {% endfor %}
+        </div>
+
+        <div class="rhythm-container">
+            今日運行節奏 <span class="rhythm-badge">{{ daily_rhythm }}</span>
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <div class="footer-left">天地運行背景觀測系統</div>
+        <div class="footer-right">http://127.0.0.1:8000/</div>
+    </div>
+</body>
+</html>

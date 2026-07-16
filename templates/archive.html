@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欽天監｜每日天時檔案</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="logo">欽天監 <span>今日天時</span></div>
+        <nav class="app-nav">
+            <a href="/">今日天時</a>
+            <a href="/archive" class="active">歷史檔案</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="archive-header">
+            <h1>每日天時檔案 (Astro Archives)</h1>
+            <p class="section-desc">已鎖定並儲存的歷史天地運行觀測日誌，按日期倒序排列。</p>
+        </section>
+
+        <!-- Archive Lists -->
+        <section class="archive-list-container">
+            {% if states %}
+                {% for st in states %}
+                <div class="archive-item-card">
+                    <div class="archive-date-row">
+                        <span class="archive-date gold-text">{{ st.date }}</span>
+                        <span class="archive-rhythm-badge">{{ st.daily_rhythm }}</span>
+                    </div>
+                    <p class="archive-summary">{{ st.daily_summary }}</p>
+                    <a href="/date/{{ st.date }}" class="btn-text-gold">查看詳細觀測報告 →</a>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="card empty-card">
+                    <p>目前尚無歷史檔案記錄。請先在前台查詢或自動生成特定日期天時。</p>
+                </div>
+            {% endif %}
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <p>© 2026 欽天監今日天時 · 運行於真實前瞻性觀測網絡</p>
+    </footer>
+</body>
+</html>

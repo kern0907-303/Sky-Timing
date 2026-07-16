@@ -1,0 +1,66 @@
+{
+  "date": "2026-07-20",
+  "timezone": "Asia/Taipei",
+  "city": "Taipei",
+  "raw_timing_data": {
+    "solar_date": "2026-07-20",
+    "lunar_date": "二〇二六年六月初七",
+    "solar_term": "None",
+    "prev_jieqi": "小暑",
+    "next_jieqi": "大暑",
+    "month_command": "季夏月令",
+    "year_ganzhi": "丙午",
+    "month_ganzhi": "乙未",
+    "day_ganzhi": "乙未",
+    "hour_ganzhi": "壬午",
+    "jianchu": "建",
+    "zhishen": "玄武",
+    "xiu": "张",
+    "nayin": "沙中金",
+    "wuxing": "木土",
+    "clash": "(己丑)牛",
+    "has_clash": 0,
+    "has_combo": 0,
+    "yueling_wuxing": "木土",
+    "jishen": "守日, 不将, 圣心",
+    "xiongsha": "月建, 小时, 土府, 元武"
+  },
+  "semantic_vectors": {
+    "generation": 0.7,
+    "expansion": 0.3,
+    "stabilization": 0.5,
+    "circulation": 0.3,
+    "contraction": 0.5,
+    "transformation": 0.3,
+    "disruption": 0.3,
+    "uncertainty": 0.3
+  },
+  "primary_force": "建立、形成、定位",
+  "secondary_force": "穩定、固定、承載、維持",
+  "constraint_force": "穩定、固定、承載、維持",
+  "daily_rhythm": "啟動",
+  "daily_summary": "今日主要方向：啟動。支持力量：建立、形成、定位。限制力量：穩定、固定、承載、維持。運行節奏：今日氣場有利於新結構的成形，適合宣告起點與勾勒方向。。天地層面呈現「啟動」大氣，建議順應此運行節律，關注「今天真正需要建立的，是新的行動...」之自省，避免逆勢強求。",
+  "reflection_question": "今天真正需要建立的，是新的行動，還是能夠承載行動的結構？",
+  "content_details": {
+    "one_liner": "今日天地運行以【啟動】為軸心，今日氣場有利於新結構的成形，適合宣告起點與勾勒方向。 力量分布平緩，天地動能和諧。",
+    "keywords": [
+      "建立",
+      "穩固",
+      "收斂"
+    ],
+    "support_points": [
+      "新秩序與架構正迎來初步建立時機。",
+      "穩定承載的條件到位，利於長線規劃。"
+    ],
+    "risk_points": [
+      "外在推力減弱，面臨推進緩慢的收縮阻力。"
+    ],
+    "daily_rhythm": "啟動",
+    "daily_rhythm_reason": "今日氣場有利於新結構的成形，適合宣告起點與勾勒方向。",
+    "tian_obs": "天地層：當前運行至None節氣，月令以【木土】氣場主導，本日值神為【玄武】、建除十二神為【建】。這代表自然界處於「今日氣場有利於新結構的成形，適合宣告起點與勾勒方向」的背景週期中。",
+    "group_obs": "群體層：群體活動表現出「建立、形成、定位」的普遍張力。成員容易感到溝通成本平緩，適合透過「啟動」的節奏取得團隊共識。",
+    "person_obs": "個人層：注意力容易集中在「穩定、固定、承載、維持」相關事務。可能會感覺到自己被兩種力量拉扯（力量分布平緩，天地動能和諧。），應學會順應天時節奏，不急於強行求成。",
+    "question": "今天真正需要建立的，是新的行動，還是能夠承載行動的結構？",
+    "summary": "今日主要方向：啟動。支持力量：建立、形成、定位。限制力量：穩定、固定、承載、維持。運行節奏：今日氣場有利於新結構的成形，適合宣告起點與勾勒方向。。天地層面呈現「啟動」大氣，建議順應此運行節律，關注「今天真正需要建立的，是新的行動...」之自省，避免逆勢強求。"
+  }
+}
