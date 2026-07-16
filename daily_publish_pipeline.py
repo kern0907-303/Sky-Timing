@@ -82,7 +82,7 @@ def run_publish_pipeline(date_str, timezone="Asia/Taipei", city="Taipei"):
         
     # 6b. daily_web.md
     web_md_path = os.path.join(day_dir, "daily_web.md")
-    web_md_content = f"""# 欽天監今日天時觀測報告 — {date_str}
+    web_md_content = f"""# Sky Timing 欽天監｜每日天時觀測報告 — {date_str}
 
 ## 今日主題：{', '.join(content['keywords'])}
 ## 今日天時一句話：

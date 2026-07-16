@@ -19,7 +19,7 @@ def save_config(config):
 
 def run_setup():
     print("========================================")
-    print(" 欽天監今日天時 Telegram 通知機器人設定")
+    print(" Sky Timing 欽天監｜每日天時觀測 Telegram 設定")
     print("========================================")
     
     config = load_config()
@@ -78,7 +78,7 @@ def run_setup():
     test_url = f"https://api.telegram.org/bot{token}/sendMessage"
     payload = {
         "chat_id": chat_id,
-        "text": f"🎉 恭喜！《欽天監｜今日天時》通知機器人已綁定成功。今後將為您每日定時發送天時觀測與分享卡。"
+        "text": f"🎉 恭喜！《Sky Timing 欽天監｜每日天時觀測》通知機器人已綁定成功。今後將為您每日定時發送天時觀測與分享卡。"
     }
     requests.post(test_url, json=payload)
     print("✅ 已發送測試訊息至您的 Telegram 帳號！")

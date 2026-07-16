@@ -46,7 +46,7 @@ def generate_short_message(date_str, timing, vectors, forces, content_dict, dail
         reminder = "資訊不足時宜放慢步伐，靜待轉機。"
         
     msg = (
-        f"【今日天時｜{date_str}】\n\n"
+        f"【Sky Timing 欽天監｜每日天時觀測 — {date_str}】\n\n"
         f"今日主題：\n{keywords}\n\n"
         f"今日狀態：\n{status_sentences}\n\n"
         f"今日提醒：\n{reminder}\n\n"

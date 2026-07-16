@@ -15,23 +15,23 @@ def generate_social_post(date_str, timing, vectors, forces, content_dict, daily_
     question = content_dict["question"]
     
     # 1. Opening variation based on date & primary energy
-    opening_sentence = f"【今日天時觀察｜{date_str}】\n感覺到前進的阻力，或是思緒有些起伏嗎？今天整體的運行律動指向「{rhythm}」。"
+    opening_sentence = f"【Sky Timing 欽天監｜每日天時觀測 — {date_str}】\n感覺到前進的阻力，或是思緒有些起伏嗎？今天整體的運行律動指向「{rhythm}」。"
     if rhythm == "啟動":
-        opening_sentence = f"【今日天時觀察｜{date_str}】\n新秩序的種子正在萌芽。今天天地間有一股適合「{rhythm}」的生氣，非常利於勾勒新的方向與點燃開端。"
+        opening_sentence = f"【Sky Timing 欽天監｜每日天時觀測 — {date_str}】\n新秩序的種子正在萌芽。今天天地間有一股適合「{rhythm}」的生氣，非常利於勾勒新的方向與點燃開端。"
     elif rhythm == "推進":
-        opening_sentence = f"【今日天時觀察｜{date_str}】\n蓄勢待發的能量正強烈釋放。今天的氣場適合向外「{rhythm}」，是擴大行動規模、跨出邊界的開展時刻。"
+        opening_sentence = f"【Sky Timing 欽天監｜每日天時觀測 — {date_str}】\n蓄勢待發的能量正強烈釋放。今天的氣場適合向外「{rhythm}」，是擴大行動規模、跨出邊界的開展時刻。"
     elif rhythm == "穩定":
-        opening_sentence = f"【今日天時觀察｜{date_str}】\n天地安靜沉穩，承載力強。今天適合讓腳步落實，以「{rhythm}」為主軸，是默默加固現有基石的絕佳時機。"
+        opening_sentence = f"【Sky Timing 欽天監｜每日天時觀測 — {date_str}】\n天地安靜沉穩，承載力強。今天適合讓腳步落實，以「{rhythm}」為主軸，是默默加固現有基石的絕佳時機。"
     elif rhythm == "整合":
-        opening_sentence = f"【今日天時觀察｜{date_str}】\n人際與資訊正在流動對接。今天天地運行有利於「{rhythm}」，是打通協調網絡、交換資源與取得共識的契機。"
+        opening_sentence = f"【Sky Timing 欽天監｜每日天時觀測 — {date_str}】\n人際與資訊正在流動對接。今天天地運行有利於「{rhythm}」，是打通協調網絡、交換資源與取得共識的契機。"
     elif rhythm == "收斂":
-        opening_sentence = f"【今日天時觀察｜{date_str}】\n潮水正在退去，動能緩緩向內聚合。今天的天時透露出「{rhythm}」的意味，特別適合整理舊物、做項目的盤點與收尾。"
+        opening_sentence = f"【Sky Timing 欽天監｜每日天時觀測 — {date_str}】\n潮水正在退去，動能緩緩向內聚合。今天的天時透露出「{rhythm}」的意味，特別適合整理舊物、做項目的盤點與收尾。"
     elif rhythm == "調整":
-        opening_sentence = f"【今日天時觀察｜{date_str}】\n氣流處於過渡交接點。今天的天時主軸在於「{rhythm}」，與其頑固地堅持既定軌道，不如順應形勢微調方向。"
+        opening_sentence = f"【Sky Timing 欽天監｜每日天時觀測 — {date_str}】\n氣流處於過渡交接點。今天的天時主軸在於「{rhythm}」，與其頑固地堅持既定軌道，不如順應形勢微調方向。"
     elif rhythm == "轉換":
-        opening_sentence = f"【今日天時觀察｜{date_str}】\n天地能量正進行出清重組。今天的運行旋律偏向「{rhythm}」，適合斷捨離、打破不合時宜的舊結構並釋放負擔。"
+        opening_sentence = f"【Sky Timing 欽天監｜每日天時觀測 — {date_str}】\n天地能量正進行出清重組。今天的運行旋律偏向「{rhythm}」，適合斷捨離、打破不合時宜的舊結構並釋放負擔。"
     elif rhythm == "暫停":
-        opening_sentence = f"【今日天時觀察｜{date_str}】\n能見度降低，氣場波動不定。今天適合主動「{rhythm}」，保留彈性，靜下心來觀察局勢，切忌急躁做出重大決定。"
+        opening_sentence = f"【Sky Timing 欽天監｜每日天時觀測 — {date_str}】\n能見度降低，氣場波動不定。今天適合主動「{rhythm}」，保留彈性，靜下心來觀察局勢，切忌急躁做出重大決定。"
 
     # 2. Middle paragraph detailing forces & friction
     has_clash = timing["has_clash"]

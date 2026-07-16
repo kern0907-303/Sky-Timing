@@ -14,7 +14,7 @@ from daily_interpretation import generate_daily_content, ask_daily_timing_relati
 from schemas import GenerateRequest, AskRequest, FeedbackRequest
 
 # Initialize FastAPI App
-app = FastAPI(title="欽天監今日天時 MVP")
+app = FastAPI(title="Sky Timing 欽天監｜每日天時觀測")
 
 # Set up directories
 current_dir = os.path.dirname(os.path.abspath(__file__))
