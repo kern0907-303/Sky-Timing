@@ -3,3 +3,6 @@ __pycache__/
 *.pyc
 .DS_Store
 telegram_config.json
+cron_spec
+cron.log
+daily_cron.sh
