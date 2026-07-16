@@ -280,25 +280,47 @@ def ask_daily_timing_relation(timing_data, vectors, forces, question, event_type
     clash = timing_data["has_clash"]
     prim = forces["primary_force"]
     
-    # Simple rule-based logic mapping
+    # Determine suitability and advice based on energy and event type
     suitability = "平順中立"
     advice = "適合按部就班推進。"
     
-    if clash and event_type in ["簽約", "上線", "發布"]:
-        suitability = "面臨阻力與變數"
-        advice = "本日日沖氣場較強，且有衝突能量，建議將重要行動（如發布/簽約）改為內部檢查或非公開的局部推進，以化解摩擦。"
-    elif jc in ["建", "成", "開"] and event_type in ["啟動", "課程開班", "合作"]:
-        suitability = "深受天時支持"
-        advice = "今日天時利於建立與擴充新秩序，適合高調啟動或舉行儀式，能獲得最大順向推進力。"
-    elif jc in ["破", "危", "收", "閉"]:
-        suitability = "適合收縮與防禦"
-        advice = "本日建除氣場為收斂或清理瓦解，不太適合強行對外拓展。適合做覆盤、除舊迎新或補充細節。"
-        
+    if clash:
+        if event_type in ["合約", "啟動", "情感約會"]:
+            suitability = "面臨阻力與考驗"
+            advice = "今日日值歲破或能量衝突強烈，對於需要和諧共識的「情感約會」或重大利益的「簽約啟動」變數極多，建議放緩推進節奏，避免強求結果。"
+        else:
+            suitability = "變數與波動較多"
+            advice = "天時能量存在交戰或沖煞，各類事務進展易生突發枝節，建議以彈性防禦為主，避免做重大定案。"
+            
+    elif jc in ["建", "成", "開"]:
+        if event_type in ["啟動", "合約", "情感約會"]:
+            suitability = "深受天時支持"
+            advice = "當前建除十二神氣場生機勃勃，對於「啟動計畫」或「情感約會/關係推進」等向外建立秩序的事務非常有利，能獲得強勁的順向推動力。"
+        elif event_type in ["關係斷捨離", "收尾"]:
+            suitability = "阻力稍大"
+            advice = "今日天時氣流偏向擴張與建立，對於「收尾結束」或「關係切割」等收斂性事務容易產生拖延，建議先作理性評估，暫緩強硬切斷。"
+            
+    elif jc in ["收", "閉", "執"]:
+        if event_type in ["收尾", "關係斷捨離"]:
+            suitability = "利於收斂與斷捨離"
+            advice = "本日能量主軸為收存與閉藏，最適合將多餘、耗能的事務收尾，或為不健康的感情關係進行「斷捨離」整理，能獲得清明與安定力。"
+        elif event_type in ["啟動", "情感約會"]:
+            suitability = "拓展受限"
+            advice = "大氣動能處於收斂封閉階段，此時若強行推動「告白約會」或「啟動新計畫」，容易感到冷淡或推進困難，建議改採低調儲備策略。"
+            
+    elif jc in ["破", "危", "除"]:
+        if event_type in ["關係斷捨離", "調整"]:
+            suitability = "適合破舊立新"
+            advice = "今日建除氣場帶有「破除、清除舊疾」的強大動能，若要進行「策略架構調整」或「結束不健康關係」，能順應天時快速排除障礙、重獲新生。"
+        elif event_type in ["合約", "情感約會"]:
+            suitability = "變數較多"
+            advice = "大氣動能帶有波動與破裂之意，在此氣流下進行「簽約交易」或「情感推進」容易因誤解而引發摩擦，建議抱持謹慎或適度推遲。"
+            
     response = (
         f"【天時關聯分析】：您所問的「{question}」（類型：{event_type}），在今日天時背景下，"
-        f"整體狀態呈現「{suitability}」。"
-        f"今日的天時主軸力量為「{prim}」。"
-        f"對於您提到的限制「{constraint}」，{advice}"
-        f"\n建議今日採取的個人節奏：穩健且順勢而為，不盲目逆氣場強求。"
+        f"整體狀態呈現「{suitability}」。\n"
+        f"今日天時的主軸能量為「{prim}」。\n"
+        f"針對您提及的限制「{constraint}」：{advice}\n"
+        f"【個人建議節奏】：穩健且順勢而為，不盲目逆氣場強求。"
     )
     return response
