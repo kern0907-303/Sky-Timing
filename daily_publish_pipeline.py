@@ -12,6 +12,7 @@ from short_message_generator import generate_short_message
 from share_card_generator import generate_share_card_png
 from content_deduplication import find_collision
 from database import save_daily_state, get_past_states_summaries
+from telegram_notifier import notify_daily, CONFIG_PATH
 
 OUTPUTS_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "daily_outputs")
 
@@ -146,6 +147,19 @@ def run_publish_pipeline(date_str, timezone="Asia/Taipei", city="Taipei"):
     print(f"  - daily_short_message.txt (Saved, length={len(short_msg)})")
     print(f"  - daily_share_card.png (Success={png_success})")
     
+    # 7. Automatically notify Telegram if configured
+    if os.path.exists(CONFIG_PATH):
+        try:
+            with open(CONFIG_PATH, "r", encoding="utf-8") as f:
+                cfg = json.load(f)
+                if cfg.get("chat_id"):
+                    print("Dispatching notification to Telegram...")
+                    notify_daily(date_str)
+        except Exception as e:
+            print(f"Failed to load Telegram config for notification: {e}")
+    else:
+        print("[Info] Telegram is not configured yet. Run 'python telegram_notifier.py --setup' to bind it.")
+        
     return full_state_payload
 
 if __name__ == "__main__":
