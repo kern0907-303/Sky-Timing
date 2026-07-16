@@ -119,7 +119,7 @@ def run_publish_pipeline(date_str, timezone="Asia/Taipei", city="Taipei"):
         f.write(web_md_content)
         
     # 6c. daily_social_post.txt
-    social_url = f"http://127.0.0.1:8000/date/{date_str}"
+    social_url = f"https://kern0907-303.github.io/Sky-Timing/date/{date_str}.html"
     social_post = generate_social_post(date_str, timing, vectors, forces, content, social_url)
     social_post_path = os.path.join(day_dir, "daily_social_post.txt")
     with open(social_post_path, "w", encoding="utf-8") as f:

@@ -109,9 +109,7 @@ def notify_daily(date_str):
     with open(short_msg_path, "r", encoding="utf-8") as f:
         message_text = f.read()
         
-    # We append the live URL to the Telegram message!
-    live_url = f"https://kern0907-303.github.io/Sky-Timing/date/{date_str}.html"
-    message_text += f"\n\n🌐 網頁版詳細觀測與問事：\n{live_url}"
+    # We use the message_text directly as it already contains the correct public GitHub Pages URL
     
     # 1. Send the share card photo with the short message text as the caption!
     photo_url = f"https://api.telegram.org/bot{token}/sendPhoto"
