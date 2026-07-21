@@ -6,6 +6,7 @@
     "solar_date": "2026-07-20",
     "lunar_date": "二〇二六年六月初七",
     "solar_term": "小暑",
+    "is_transition_day": 0,
     "prev_jieqi": "小暑",
     "next_jieqi": "大暑",
     "month_command": "季夏月令",
@@ -21,6 +22,7 @@
     "clash": "(己丑)牛",
     "has_clash": 0,
     "has_combo": 0,
+    "is_year_day_clash": 0,
     "yueling_wuxing": "木土",
     "jishen": "守日, 不将, 圣心",
     "xiongsha": "月建, 小时, 土府, 元武"

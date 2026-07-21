@@ -7,14 +7,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./static/style.css">
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
     <header class="app-header">
         <div class="logo">Sky Timing 欽天監 <span>每日天時觀測</span></div>
         <nav class="app-nav">
-            <a href="./index.html" class="active">今日天時</a>
-            <a href="./archive.html">歷史檔案</a>
+            <a href="../index.html">今日天時</a>
+            <a href="../archive.html">歷史檔案</a>
         </nav>
     </header>
 
@@ -22,11 +22,11 @@
         <!-- Date Selector -->
         <section class="date-selector-section">
             <div class="current-date-info">
-                <h1>2026-07-22</h1>
-                <p class="lunar-calendar-text">二〇二六年六月初九 · 小暑</p>
+                <h1>2026-07-25 <span class="date-badge">查詢結果</span></h1>
+                <p class="lunar-calendar-text">二〇二六年六月十二 · 大暑</p>
             </div>
             <div class="selector-controls">
-                <input type="date" id="dateQuery" value="2026-07-22">
+                <input type="date" id="dateQuery" value="2026-07-25">
                 <button onclick="queryDate()" class="btn-gold">查詢日期</button>
             </div>
         </section>
@@ -34,15 +34,15 @@
         <!-- One Line Description -->
         <section class="card one-liner-card">
             <div class="card-accent"></div>
-            <h2>今日觀測</h2>
-            <p class="one-liner-text">「 今日天地運行以【啟動】為軸心，今日氣場有利於新結構的成形，適合宣告起點與勾勒方向。  」</p>
+            <h2>當日觀測</h2>
+            <p class="one-liner-text">「 今日天地運行以【轉換】為軸心，面臨清理與瓦解，適合打破不合時宜的舊架構，釋放包袱。  」</p>
             <div class="keywords-row">
                 
+                <span class="keyword-tag">瓦解</span>
+                
+                <span class="keyword-tag">模糊</span>
+                
                 <span class="keyword-tag">建立</span>
-                
-                <span class="keyword-tag">擴展</span>
-                
-                <span class="keyword-tag">穩固</span>
                 
             </div>
         </section>
@@ -72,9 +72,9 @@
                     <div class="vector-bar-row">
                         <span class="vector-label">穩定 (承載)</span>
                         <div class="bar-container">
-                            <div class="bar-fill" style="width: 30.0%"></div>
+                            <div class="bar-fill" style="width: 10.0%"></div>
                         </div>
-                        <span class="vector-value">0.3</span>
+                        <span class="vector-value">0.1</span>
                     </div>
                     
                     <div class="vector-bar-row">
@@ -104,17 +104,17 @@
                     <div class="vector-bar-row">
                         <span class="vector-label">瓦解 (破缺)</span>
                         <div class="bar-container">
-                            <div class="bar-fill" style="width: 30.0%"></div>
+                            <div class="bar-fill" style="width: 80.0%"></div>
                         </div>
-                        <span class="vector-value">0.3</span>
+                        <span class="vector-value">0.8</span>
                     </div>
                     
                     <div class="vector-bar-row">
                         <span class="vector-label">不確定 (觀察)</span>
                         <div class="bar-container">
-                            <div class="bar-fill" style="width: 30.0%"></div>
+                            <div class="bar-fill" style="width: 45.0%"></div>
                         </div>
-                        <span class="vector-value">0.3</span>
+                        <span class="vector-value">0.45</span>
                     </div>
                     
                 </div>
@@ -126,19 +126,19 @@
                 <div class="forces-info">
                     <div class="force-item">
                         <span class="force-title">核心推動力量</span>
-                        <span class="force-val gold-text">建立、形成、定位</span>
+                        <span class="force-val gold-text">切割、瓦解、衝突、解除</span>
                     </div>
                     <div class="force-item">
                         <span class="force-title">次要支持力量</span>
-                        <span class="force-val">擴散、開放、向外推動</span>
+                        <span class="force-val">模糊、變動、資訊不足、容錯降低</span>
                     </div>
                     <div class="force-item">
                         <span class="force-title">潛在阻力與限制</span>
-                        <span class="force-val">穩定、固定、承載、維持</span>
+                        <span class="force-val">切割、瓦解、衝突、解除</span>
                     </div>
                     <div class="force-item">
-                        <span class="force-title">今日運行節奏</span>
-                        <span class="force-val rhythm-badge">啟動</span>
+                        <span class="force-title">當日運行節奏</span>
+                        <span class="force-val rhythm-badge">轉換</span>
                     </div>
                 </div>
                 
@@ -152,7 +152,7 @@
         <!-- Support and Constraints List -->
         <section class="grid-2">
             <div class="card support-card">
-                <h2>今日推動力量 (Support)</h2>
+                <h2>當日推動力量 (Support)</h2>
                 <ul class="clean-list">
                     
                     <li><span class="dot-green"></span> 天地能量均衡，利於例行事務推進。</li>
@@ -160,10 +160,12 @@
                 </ul>
             </div>
             <div class="card constraint-card">
-                <h2>今日限制力量 (Constraint)</h2>
+                <h2>當日限制力量 (Constraint)</h2>
                 <ul class="clean-list">
                     
-                    <li><span class="dot-red"></span> 氣場平穩，無顯著阻力，但需防範鬆懈。</li>
+                    <li><span class="dot-red"></span> 面臨局部結構的摩擦、破缺或舊物瓦解。</li>
+                    
+                    <li><span class="dot-red"></span> 資訊缺口較大，容錯空間可能收窄。</li>
                     
                 </ul>
             </div>
@@ -175,15 +177,15 @@
             <div class="observation-tiers">
                 <div class="tier-block">
                     <h3>天地層 (Astro)</h3>
-                    <p>天地層：當前運行至小暑節氣，月令以【木土】氣場主導，本日值神為【勾陈】、建除十二神為【满】。這代表自然界處於「今日氣場有利於新結構的成形，適合宣告起點與勾勒方向」的背景週期中。</p>
+                    <p>天地層：當前運行至大暑節氣，月令以【木土】氣場主導，本日值神為【天刑】、建除十二神為【执】。這代表自然界處於「面臨清理與瓦解，適合打破不合時宜的舊架構，釋放包袱」的背景週期中。</p>
                 </div>
                 <div class="tier-block">
                     <h3>環境層 (Social)</h3>
-                    <p>環境層：環境表現出「建立、形成、定位」的普遍張力。容易感到溝通成本平緩，適合透過「啟動」的節奏來對接外部環境。</p>
+                    <p>環境層：環境表現出「切割、瓦解、衝突、解除」的普遍張力。容易感到溝通成本增加，適合透過「轉換」的節奏來對接外部環境。</p>
                 </div>
                 <div class="tier-block">
                     <h3>個人層 (Personal)</h3>
-                    <p>個人層：注意力容易集中在「擴散、開放、向外推動」相關事務。可能會感覺到自己被兩種力量拉扯（），應學會順勢借力，不急於強行推進。</p>
+                    <p>個人層：注意力容易集中在「模糊、變動、資訊不足、容錯降低」相關事務。可能會感覺到自己被兩種力量拉扯（），應學會順勢借力，不急於強行推進。</p>
                 </div>
             </div>
         </section>
@@ -192,31 +194,31 @@
         <details class="astro-details-fold">
             <summary class="btn-outline fold-summary">展開天時學術結構資料 (Level 3)</summary>
             <div class="card astro-details-card-inside">
-                <h2>今日曆法結構</h2>
+                <h2>當日曆法結構</h2>
                 <div class="astro-details-grid">
                     <div class="astro-card">
                         <span class="a-title">建除十二神</span>
-                        <span class="a-val">满</span>
+                        <span class="a-val">执</span>
                     </div>
                     <div class="astro-card">
                         <span class="a-title">黃黑值神</span>
-                        <span class="a-val">勾陈</span>
+                        <span class="a-val">天刑</span>
                     </div>
                     <div class="astro-card">
                         <span class="a-title">二十八宿</span>
-                        <span class="a-val">轸</span>
+                        <span class="a-val">氐</span>
                     </div>
                     <div class="astro-card">
                         <span class="a-title">干支</span>
-                        <span class="a-val">丁酉日</span>
+                        <span class="a-val">庚子日</span>
                     </div>
                     <div class="astro-card">
                         <span class="a-title">五行納音</span>
-                        <span class="a-val">山下火</span>
+                        <span class="a-val">壁上土</span>
                     </div>
                     <div class="astro-card">
                         <span class="a-title">沖煞</span>
-                        <span class="a-val">(辛卯)兔</span>
+                        <span class="a-val">(甲午)马</span>
                     </div>
                 </div>
             </div>
@@ -225,12 +227,12 @@
         <!-- Daily Reflection Question -->
         <section class="card question-card">
             <h2>當日深度思考 (Reflection)</h2>
-            <p class="question-text">「 當你著手建構新項目時，核心的定位與方向是否已經足夠清晰？ 」</p>
+            <p class="question-text">「 今天所發生的破缺，是偶然的打擊，還是結構重組的必然序曲？ 」</p>
         </section>
 
         <!-- Ask timing relation - Secondary Feature -->
         <section class="card ask-section">
-            <h2>用今日天時看一件事</h2>
+            <h2>用當日天時看一件事</h2>
             <p class="section-desc">把你正在考慮的事，放進今日天時中看看。</p>
             <div class="ask-trigger-container">
                 <button onclick="toggleAskForm()" class="btn-outline">展開問事面板</button>
@@ -352,11 +354,12 @@
 
     <script>
         const DAILY_TIMING = {
-            jianchu: "满",
-            has_clash: false,
-            primary_force: "建立、形成、定位"
+            jianchu: "执",
+            has_clash: true,
+            primary_force: "切割、瓦解、衝突、解除"
         };
     </script>
-    <script src="./static/app.js"></script>
+    <script src="../static/app.js"></script>
+<script src="../app_static_override.js"></script>
 </body>
 </html>
