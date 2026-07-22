@@ -1,0 +1,68 @@
+{
+  "date": "2026-07-23",
+  "timezone": "Asia/Taipei",
+  "city": "Taipei",
+  "raw_timing_data": {
+    "solar_date": "2026-07-23",
+    "lunar_date": "二〇二六年六月初十",
+    "solar_term": "大暑",
+    "is_transition_day": 1,
+    "prev_jieqi": "大暑",
+    "next_jieqi": "立秋",
+    "month_command": "季夏月令",
+    "year_ganzhi": "丙午",
+    "month_ganzhi": "乙未",
+    "day_ganzhi": "戊戌",
+    "hour_ganzhi": "戊午",
+    "jianchu": "平",
+    "zhishen": "青龙",
+    "xiu": "角",
+    "nayin": "平地木",
+    "wuxing": "土土",
+    "clash": "(壬辰)龙",
+    "has_clash": 0,
+    "has_combo": 0,
+    "is_year_day_clash": 0,
+    "yueling_wuxing": "木土",
+    "jishen": "四相, 不将, 要安, 青龙",
+    "xiongsha": "河魁, 死神, 月煞, 月虚"
+  },
+  "semantic_vectors": {
+    "generation": 0.3,
+    "expansion": 0.3,
+    "stabilization": 0.7,
+    "circulation": 0.3,
+    "contraction": 0.3,
+    "transformation": 0.3,
+    "disruption": 0.3,
+    "uncertainty": 0.3
+  },
+  "primary_force": "穩定、固定、承載、維持",
+  "secondary_force": "建立、形成、定位",
+  "constraint_force": "穩定、固定、承載、維持",
+  "daily_rhythm": "穩定",
+  "daily_summary": "今日主要方向：穩定。支持力量：穩定、固定、承載、維持。限制力量：穩定、固定、承載、維持。運行節奏：今日天地氣場以守恆承載為主，建議鞏固成果以蓄積後勁。。天地層面呈現「穩定」大氣，建議順應此運行節律，關注「在不變的日常中，你是否能看見穩...」之自省，避免逆勢強求。",
+  "reflection_question": "在不變的日常中，你是否能看見穩定底座下悄然累積的動能？",
+  "content_details": {
+    "one_liner": "今日大氣氣場轉向【穩定】律動，今日天地氣場以守恆承載為主，建議鞏固成果以蓄積後勁。 力量分布平緩，天地動能和諧。",
+    "keywords": [
+      "承載",
+      "定位",
+      "發布"
+    ],
+    "support_points": [
+      "核心底座穩固，防守與加固基礎的效率極高。"
+    ],
+    "risk_points": [
+      "氣場平穩，無顯著阻力，但需防範鬆懈。"
+    ],
+    "daily_rhythm": "穩定",
+    "daily_rhythm_reason": "今日天地氣場以守恆承載為主，建議鞏固成果以蓄積後勁。",
+    "tian_obs": "天地層：當前運行至大暑節氣，月令以【木土】氣場主導，本日值神為【青龙】、建除十二神為【平】。這代表自然界處於「今日天地氣場以守恆承載為主，建議鞏固成果以蓄積後勁」的背景週期中。",
+    "group_obs": "環境層：環境表現出「穩定、固定、承載、維持」的普遍張力。容易感到溝通成本平緩，適合透過「穩定」的節奏來對接外部環境。",
+    "person_obs": "個人層：注意力將聚焦在「建立、形成、定位」相關事務。當前能量運作和諧，無顯著阻力與拉扯感，適合順勢推進既定計劃。",
+    "question": "在不變的日常中，你是否能看見穩定底座下悄然累積的動能？",
+    "summary": "今日主要方向：穩定。支持力量：穩定、固定、承載、維持。限制力量：穩定、固定、承載、維持。運行節奏：今日天地氣場以守恆承載為主，建議鞏固成果以蓄積後勁。。天地層面呈現「穩定」大氣，建議順應此運行節律，關注「在不變的日常中，你是否能看見穩...」之自省，避免逆勢強求。",
+    "synthesis": "【天時解構】天地能量運作和諧，無顯著阻力與摩擦。適合順勢而為，按部就班推進各項既定計劃。"
+  }
+}
