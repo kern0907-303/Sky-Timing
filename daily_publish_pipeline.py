@@ -189,6 +189,11 @@ def run_publish_pipeline(date_str, timezone="Asia/Taipei", city="Taipei"):
             subprocess.run(["git", "commit", "-m", f"Auto-publish update for {date_str}"], check=True)
             subprocess.run(["git", "push"], check=True)
             print("Successfully compiled and pushed latest site to GitHub.")
+            
+            # Wait for GitHub Pages build/deployment to complete (takes ~30s on GitHub)
+            import time
+            print("Waiting 30 seconds for GitHub Pages deployment build to complete...")
+            time.sleep(30)
         else:
             print("No changes to commit/push.")
     except Exception as git_err:
