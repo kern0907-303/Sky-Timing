@@ -125,8 +125,25 @@ def run_publish_pipeline(date_str, timezone="Asia/Taipei", city="Taipei"):
     with open(social_post_path, "w", encoding="utf-8") as f:
         f.write(social_post)
         
+    # Calculate alert reasons
+    is_transition = timing.get("is_transition_day", 0) == 1
+    is_year_day_clash = timing.get("is_year_day_clash", 0) == 1
+    has_clash = timing.get("has_clash", 0) == 1
+    has_conflict = "和諧" not in content.get("synthesis", "")
+    
+    alert_reasons = []
+    if is_transition:
+        term_name = timing.get("solar_term", "")
+        alert_reasons.append(f"交節氣_{term_name}" if term_name else "交節氣")
+    if is_year_day_clash:
+        alert_reasons.append("歲破大沖")
+    elif has_clash:
+        alert_reasons.append("日值大沖")
+    if has_conflict:
+        alert_reasons.append("磁場衝突")
+        
     # 6d. daily_short_message.txt
-    short_msg = generate_short_message(date_str, timing, vectors, forces, content, social_url)
+    short_msg = generate_short_message(date_str, timing, vectors, forces, content, social_url, alert_reasons=alert_reasons)
     short_msg_path = os.path.join(day_dir, "daily_short_message.txt")
     with open(short_msg_path, "w", encoding="utf-8") as f:
         f.write(short_msg)
