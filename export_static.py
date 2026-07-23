@@ -66,7 +66,8 @@ def build_static_site():
         
         # Relative replacements for subfolder
         d_html = d_html.replace('href="/static/style.css"', 'href="../static/style.css"')
-        d_html = d_html.replace('src="/static/app.js"', 'src="../app_static_override.js"')
+        d_html = d_html.replace('src="/static/app.js"', 'src="../static/app.js"')
+        d_html = d_html.replace('</body>', '<script src="../app_static_override.js"></script>\n</body>')
         d_html = d_html.replace('href="/archive"', 'href="../archive.html"')
         d_html = d_html.replace('href="/"', 'href="../index.html"')
         d_html = d_html.replace('fetch("/api/daily/ask"', 'fetch("../api/daily/ask"') # note: static ask will error out, but main UI loads fine
@@ -93,10 +94,6 @@ function toggleAskForm() {
         form.className = "ask-form-hidden";
         triggerBtn.textContent = "展開問事面板";
     }
-}
-// Ask submission is dynamic (only works if FastAPI backend is alive, otherwise logs warning)
-async function submitAskQuery() {
-    alert("動態問事關聯分析功能僅在本地運行 (FastAPI) 時支援，靜態 GitHub Pages 僅提供今日天時瀏覽。");
 }
 """
     with open(os.path.join(PROJECT_ROOT, "app_static_override.js"), "w", encoding="utf-8") as f:

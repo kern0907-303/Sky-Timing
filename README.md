@@ -38,12 +38,15 @@ daily_mvp/
 ├── short_message_generator.py # 生成 120-180 字簡短貼文 (LINE/TG)
 ├── share_card_generator.py    # 調用 Chrome Headless 輸出 1080x1350 PNG
 ├── feedback_summary.py        # 聚合生成反饋統計與觀察 Markdown
-├── daily_publish_pipeline.py  # 整體每日發佈與存檔管線主程式
+├── daily_publish_pipeline.py  # 整體每日發佈與存檔管線主程式 (含週日週報與預警條件)
+├── telegram_notifier.py       # Telegram 機器人通知程式
+├── line_notifier.py           # Line OA 官方帳號通知程式
 ├── templates/                 # 模板檔
 │   ├── today.html             # 今日天時首頁 (分層 UI + 反饋)
 │   ├── date.html              # 指定日期結果頁 (分層 UI + 反饋)
 │   ├── archive.html           # 歷史檔案清單頁
-│   └── share_card.html        # 分享卡 HTML 視覺模板
+│   ├── share_card.html        # 分享卡 HTML 視覺模板
+│   └── weekly_chart.html      # 週報天氣圖 HTML 視覺模板
 ├── static/                    # 靜態資源
 │   ├── style.css              # 欽天監高留白視覺美學 (含折疊 UI)
 │   └── app.js                 # 查詢、問事、反饋提交邏輯
@@ -66,10 +69,25 @@ daily_mvp/
 pip install -r requirements.txt
 ```
 
+### 設定社群通知管道 (二選一或雙管齊下)
+
+#### A. Telegram 機器人設定
+```bash
+# 執行互動式綁定設定
+python telegram_notifier.py --setup
+```
+
+#### B. Line OA 官方帳號設定
+```bash
+# 執行互動式綁定設定，輸入 Channel Access Token 與 User ID
+python line_notifier.py --setup
+```
+
 ### 每日排程管線執行 (定時任務)
 ```bash
 # 計算、去重、渲染、截圖，並在 daily_outputs/ 下存檔 Package
-python daily_publish_pipeline.py --date 2026-07-16
+# 週日執行時會自動預先產出「下週天時天氣圖」並推送週報
+python daily_publish_pipeline.py --date 2026-07-19
 ```
 
 ### 生成反饋統計摘要 (CLI)

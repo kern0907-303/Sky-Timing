@@ -134,14 +134,13 @@ def save_feedback(date_str, reaction, observation, anonymous_session_id):
     
     try:
         cursor.execute("""
-            INSERT INTO daily_feedback (
+            INSERT OR REPLACE INTO daily_feedback (
                 daily_state_id, date, reaction, observation, created_at, anonymous_session_id
             ) VALUES (?, ?, ?, ?, ?, ?)
         """, (state_id, date_str, reaction, observation, created_at, anonymous_session_id))
         conn.commit()
         success = True
     except sqlite3.IntegrityError:
-        # Already submitted feedback for this date with this session
         success = False
     conn.close()
     return success

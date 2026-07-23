@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>Sky Timing 欽天監｜本週天時天氣圖</title>
+    <style>
+        :root {
+            --bg-dark: #050A18;
+            --gold: #E2C07C;
+            --gold-hover: #D4AF37;
+            --gold-border: rgba(226, 192, 124, 0.25);
+            --gold-border-bright: rgba(226, 192, 124, 0.45);
+            --text-primary: #F3F4F6;
+            --text-secondary: #9CA3AF;
+            --text-muted: #6B7280;
+            --red-accent: #F87171;
+            --red-bg: rgba(248, 113, 113, 0.1);
+            --green-accent: #34D399;
+            --green-bg: rgba(52, 211, 153, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 1080px;
+            height: 1350px;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(226, 192, 124, 0.08) 0%, transparent 60%),
+                radial-gradient(circle at 50% 100%, rgba(226, 192, 124, 0.03) 0%, transparent 60%);
+            color: var(--text-primary);
+            font-family: 'PingFang TC', 'STHeitiTC-Light', 'Microsoft JhengHei Light', sans-serif;
+            font-weight: 300;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 80px 70px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Gold thin double frame */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            bottom: 30px;
+            left: 30px;
+            right: 30px;
+            border: 1px solid var(--gold-border);
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            top: 38px;
+            bottom: 38px;
+            left: 38px;
+            right: 38px;
+            border: 1px solid rgba(226, 192, 124, 0.08);
+            pointer-events: none;
+        }
+
+        /* Header */
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 1px solid rgba(226, 192, 124, 0.15);
+            padding-bottom: 25px;
+        }
+
+        .header-title-area {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .brand-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 38px;
+            font-weight: 700;
+            letter-spacing: 6px;
+            color: var(--text-primary);
+        }
+
+        .brand-subtitle {
+            font-size: 24px;
+            color: var(--gold);
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+
+        .date-range {
+            font-size: 26px;
+            color: var(--text-secondary);
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* Main Content area */
+        .card-body {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 40px 0;
+            gap: 30px;
+        }
+
+        .chart-container {
+            width: 100%;
+            background: rgba(13, 23, 49, 0.35);
+            border: 1px solid rgba(226, 192, 124, 0.1);
+            border-radius: 12px;
+            padding: 30px;
+            position: relative;
+        }
+
+        .chart-title {
+            font-size: 20px;
+            color: var(--gold);
+            margin-bottom: 20px;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .chart-svg {
+            width: 100%;
+            height: 320px;
+            overflow: visible;
+        }
+
+        .chart-grid-line {
+            stroke: rgba(226, 192, 124, 0.05);
+            stroke-width: 1;
+        }
+
+        .chart-grid-text {
+            font-size: 14px;
+            fill: var(--text-muted);
+            text-anchor: end;
+        }
+
+        /* 7-Days Details Grid */
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 15px;
+            width: 100%;
+        }
+
+        .day-column {
+            background: rgba(13, 23, 49, 0.45);
+            border: 1px solid rgba(226, 192, 124, 0.12);
+            border-radius: 10px;
+            padding: 20px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 12px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .day-column.clash-day {
+            border-color: rgba(248, 113, 113, 0.3);
+            background: rgba(248, 113, 113, 0.02);
+        }
+
+        .day-date {
+            font-size: 16px;
+            color: var(--text-secondary);
+        }
+
+        .day-name {
+            font-size: 20px;
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .day-badge {
+            font-size: 14px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .badge-rhythm {
+            background: rgba(226, 192, 124, 0.1);
+            color: var(--gold);
+            border: 1px solid rgba(226, 192, 124, 0.2);
+        }
+
+        .badge-clash {
+            background: var(--red-bg);
+            color: var(--red-accent);
+            border: 1px solid rgba(248, 113, 113, 0.3);
+        }
+
+        .day-force {
+            font-size: 16px;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .day-brief {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+
+        /* Footer */
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(226, 192, 124, 0.15);
+            padding-top: 20px;
+            font-size: 15px;
+            color: var(--text-muted);
+        }
+
+        .footer-logo {
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="card-header">
+        <div class="header-title-area">
+            <h1 class="brand-title">Sky Timing 欽天監</h1>
+            <span class="brand-subtitle">每週天時能量波動觀測</span>
+        </div>
+        <div class="date-range">{{ date_range }}</div>
+    </div>
+
+    <!-- Body -->
+    <div class="card-body">
+        
+        <!-- SVG Energy wave chart -->
+        <div class="chart-container">
+            <div class="chart-title">📊 天地運作動能走勢圖</div>
+            <svg viewBox="0 0 900 300" class="chart-svg">
+                <!-- Y Grid lines -->
+                <line x1="60" y1="50" x2="860" y2="50" class="chart-grid-line" />
+                <text x="50" y="55" class="chart-grid-text">強勢 (100)</text>
+
+                <line x1="60" y1="150" x2="860" y2="150" class="chart-grid-line" />
+                <text x="50" y="155" class="chart-grid-text">平穩 (50)</text>
+
+                <line x1="60" y1="250" x2="860" y2="250" class="chart-grid-line" />
+                <text x="50" y="255" class="chart-grid-text">收束 (0)</text>
+
+                <!-- Gradient background under the curve -->
+                <defs>
+                    <linearGradient id="curveGradient" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="rgba(226, 192, 124, 0.25)" />
+                        <stop offset="100%" stop-color="rgba(226, 192, 124, 0.0)" />
+                    </linearGradient>
+                </defs>
+
+                <!-- Fill Area under the curve -->
+                <path d="M 75,250 
+                         L 75,{{ y_coords[0] }} 
+                         L 200,{{ y_coords[1] }} 
+                         L 325,{{ y_coords[2] }} 
+                         L 450,{{ y_coords[3] }} 
+                         L 575,{{ y_coords[4] }} 
+                         L 700,{{ y_coords[5] }} 
+                         L 825,{{ y_coords[6] }} 
+                         L 825,250 Z" 
+                      fill="url(#curveGradient)" />
+
+                <!-- The energy curve -->
+                <path d="M 75,{{ y_coords[0] }} 
+                         L 200,{{ y_coords[1] }} 
+                         L 325,{{ y_coords[2] }} 
+                         L 450,{{ y_coords[3] }} 
+                         L 575,{{ y_coords[4] }} 
+                         L 700,{{ y_coords[5] }} 
+                         L 825,{{ y_coords[6] }}" 
+                      fill="none" 
+                      stroke="#E2C07C" 
+                      stroke-width="5" 
+                      stroke-linecap="round" 
+                      stroke-linejoin="round" />
+
+                <!-- Glow circles at data points -->
+                {% for i in range(7) %}
+                <circle cx="{{ 75 + i * 125 }}" cy="{{ y_coords[i] }}" r="8" fill="#050A18" stroke="#E2C07C" stroke-width="3" />
+                <circle cx="{{ 75 + i * 125 }}" cy="{{ y_coords[i] }}" r="18" fill="none" stroke="rgba(226, 192, 124, 0.2)" stroke-width="1.5" />
+                
+                <!-- Score texts above circles -->
+                <text x="{{ 75 + i * 125 }}" y="{{ y_coords[i] - 18 }}" 
+                      fill="#E2C07C" 
+                      font-size="16" 
+                      font-weight="700" 
+                      text-anchor="middle">{{ scores[i] }}</text>
+                {% endfor %}
+            </svg>
+        </div>
+
+        <!-- 7-Days Details Cards -->
+        <div class="days-grid">
+            {% for i in range(7) %}
+            <div class="day-column {% if week_data[i].has_clash %}clash-day{% endif %}">
+                <span class="day-date">{{ week_data[i].date_short }}</span>
+                <span class="day-name">{{ week_data[i].day_name }}</span>
+                
+                {% if week_data[i].is_year_day_clash %}
+                <span class="day-badge badge-clash">⚠️ 歲破</span>
+                {% elif week_data[i].has_clash %}
+                <span class="day-badge badge-clash">⚠️ 日沖</span>
+                {% else %}
+                <span class="day-badge badge-rhythm">{{ week_data[i].rhythm }}</span>
+                {% endif %}
+
+                <span class="day-force">【{{ week_data[i].primary_force }}】</span>
+                <p class="day-brief">{{ week_data[i].summary }}</p>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="card-footer">
+        <span>此圖表展現本週天地大氣能動量趨勢，宜依氣場起伏合理佈局。</span>
+        <span class="footer-logo">Sky Timing</span>
+    </div>
+
+</body>
+</html>

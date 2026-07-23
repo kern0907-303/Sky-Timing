@@ -17,14 +17,31 @@ def generate_short_message(date_str, timing, vectors, forces, content_dict, dail
       完整內容：
       {daily_url}
     """
-    keywords = "、".join(content_dict["keywords"])
     rhythm = content_dict["daily_rhythm"]
     reason = content_dict["daily_rhythm_reason"]
     question = content_dict["question"]
     
+    rhythm_emojis = {
+        "啟動": "🌱",
+        "推進": "🚀",
+        "穩定": "🛡️",
+        "整合": "🤝",
+        "收斂": "🍂",
+        "調整": "⚙️",
+        "轉換": "🔄",
+        "暫停": "🛑"
+    }
+    r_emoji = rhythm_emojis.get(rhythm, "✨")
+    
+    # Format keywords to be spaced
+    spaced_keywords = " ｜ ".join(content_dict["keywords"])
+    
     # Construct status sentences
     prim = forces["primary_force"]
-    status_sentences = f"天地氣場主軸朝向「{rhythm}」，大氣動能表現為「{prim}」。建議順應「{reason[:-1]}」的自然規律運行。"
+    status_sentences = (
+        f"天地氣場主軸朝向「{rhythm} {r_emoji}」，大氣動能表現為「{prim}」。\n"
+        f"👉 建議順應「{reason[:-1]}」的自然規律運行。"
+    )
     
     # Construct reminder
     reminder = "穩健推進，不宜躁進逆勢強求。"
@@ -46,12 +63,14 @@ def generate_short_message(date_str, timing, vectors, forces, content_dict, dail
         reminder = "資訊不足時宜放慢步伐，靜待轉機。"
         
     msg = (
-        f"【Sky Timing 欽天監｜每日天時觀測 — {date_str}】\n\n"
-        f"今日主題：\n{keywords}\n\n"
-        f"今日狀態：\n{status_sentences}\n\n"
-        f"今日提醒：\n{reminder}\n\n"
-        f"當日深度思考：\n{question}\n\n"
-        f"完整內容：\n{daily_url}"
+        f"🌌【Sky Timing 欽天監｜每日天時觀測 — {date_str}】🌌\n\n"
+        f"🏷️ 今日主題：\n{spaced_keywords}\n\n"
+        f"🌀 今日狀態：\n{status_sentences}\n\n"
+        f"💡 今日提醒：\n📌 {reminder}\n\n"
+        f"💭 當日深度思考：\n❓ {question}\n\n"
+        f"━━━━━━━━━━━━━━━━\n"
+        f"🌐 完整天時分析與能動走勢：\n"
+        f"🔗 {daily_url}"
     )
     
     # Adjust character count limit (120 to 180 words excluding URL)
@@ -60,7 +79,7 @@ def generate_short_message(date_str, timing, vectors, forces, content_dict, dail
     
     if char_count < 120:
         # Pad with a small poetic sentence
-        msg = msg.replace("完整內容：", f"天地運行自有其規律，順向借力方得圓滿。\n\n完整內容：")
+        msg = msg.replace("━━━━━━━━━━━━━━━━", f"天地運行自有其規律，順向借力方得圓滿。\n\n━━━━━━━━━━━━━━━━")
         
     return msg
 

@@ -29,24 +29,26 @@ def test_feedback_logic():
     assert success is True
     print("  First feedback submission: Success")
     
-    # 3. Duplicate check (prevent second submission for the same date with same session)
+    # 3. Duplicate check / Update check (allow updating feedback for same date with same session)
     success_dup = save_feedback(
         date_str=test_date,
         reaction="partial",
-        observation="想修改為部分有感",
+        observation="已修改為部分有感",
         anonymous_session_id=test_session
     )
-    assert success_dup is False
-    print("  Duplicate feedback prevention: Success")
+    assert success_dup is True
+    print("  Feedback update/overwrite: Success")
     
-    # 4. Fetch records
+    # 4. Fetch records and verify update
     records = get_feedback_records(days=7)
     assert len(records) > 0
     found_test = False
     for r in records:
-        if r["date"] == test_date and r["reaction"] == "resonant":
+        if r["date"] == test_date:
             found_test = True
-            print("  Retrieved observation:", r["observation"])
+            assert r["reaction"] == "partial"
+            assert r["observation"] == "已修改為部分有感"
+            print("  Retrieved updated observation:", r["observation"])
             break
     assert found_test is True
     print("All feedback logic tests passed successfully!")

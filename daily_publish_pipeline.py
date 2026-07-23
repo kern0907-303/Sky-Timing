@@ -150,18 +150,95 @@ def run_publish_pipeline(date_str, timezone="Asia/Taipei", city="Taipei"):
     print(f"  - daily_short_message.txt (Saved, length={len(short_msg)})")
     print(f"  - daily_share_card.png (Success={png_success})")
     
-    # 7. Automatically notify Telegram if configured
+    # 7. Automatically notify Telegram/Line if configured
+    d_obj = datetime.strptime(date_str, "%Y-%m-%d")
+    is_sunday = (d_obj.weekday() == 6)
+    upcoming_monday_str = (d_obj + timedelta(days=1)).strftime("%Y-%m-%d")
+    
+    is_transition = timing.get("is_transition_day", 0) == 1
+    is_year_day_clash = timing.get("is_year_day_clash", 0) == 1
+    has_clash = timing.get("has_clash", 0) == 1
+    has_conflict = "和諧" not in content.get("synthesis", "")
+    is_alert_day = is_transition or is_year_day_clash or has_clash or has_conflict
+    
+    if is_sunday:
+        print(f"Today is Sunday. Generating weekly celestial weather chart for upcoming Monday ({upcoming_monday_str})...")
+        try:
+            from weekly_chart_generator import generate_weekly_chart
+            # We generate the weekly chart starting from upcoming Monday
+            weekly_chart_png = generate_weekly_chart(upcoming_monday_str)
+            if weekly_chart_png:
+                print("Weekly chart generated successfully.")
+            else:
+                print("Warning: Failed to generate weekly chart PNG.")
+        except Exception as e:
+            print(f"Error during weekly chart generation: {e}")
+    # 6f. Compile static site & Git sync before dispatching notifications
+    # This guarantees the images and files exist on GitHub before Line/Telegram pull them.
+    try:
+        import sys
+        import subprocess
+        print("\n--- Running Static Site Compilation & Git Sync ---")
+        # Run export_static.py using sys.executable
+        subprocess.run([sys.executable, "export_static.py"], check=True)
+        # Git add
+        subprocess.run(["git", "add", "."], check=True)
+        # Check status
+        status_res = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True)
+        if status_res.stdout.strip():
+            subprocess.run(["git", "commit", "-m", f"Auto-publish update for {date_str}"], check=True)
+            subprocess.run(["git", "push"], check=True)
+            print("Successfully compiled and pushed latest site to GitHub.")
+        else:
+            print("No changes to commit/push.")
+    except Exception as git_err:
+        print(f"Warning: Git push failed: {git_err}")
+        
+    # Dispatch Telegram
     if os.path.exists(CONFIG_PATH):
         try:
             with open(CONFIG_PATH, "r", encoding="utf-8") as f:
                 cfg = json.load(f)
                 if cfg.get("chat_id"):
-                    print("Dispatching notification to Telegram...")
-                    notify_daily(date_str)
+                    from telegram_notifier import notify_daily, notify_weekly
+                    if is_sunday:
+                        print("Dispatching weekly report notification to Telegram...")
+                        notify_weekly(upcoming_monday_str)
+                    elif is_alert_day:
+                        reason = []
+                        if is_transition: reason.append("交節氣")
+                        if is_year_day_clash: reason.append("歲破大沖")
+                        elif has_clash: reason.append("日沖")
+                        if has_conflict: reason.append("磁場衝突拉扯")
+                        print(f"Today is an alert day (Reason: {', '.join(reason)}). Dispatching daily warning notification to Telegram...")
+                        notify_daily(date_str)
+                    else:
+                        print("[Info] Today is a smooth, normal day. Skipping Telegram push to prevent user fatigue.")
         except Exception as e:
-            print(f"Failed to load Telegram config for notification: {e}")
+            print(f"Failed to run Telegram notification logic: {e}")
     else:
         print("[Info] Telegram is not configured yet. Run 'python telegram_notifier.py --setup' to bind it.")
+        
+    # Dispatch Line OA
+    LINE_CONFIG_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "line_config.json")
+    if os.path.exists(LINE_CONFIG_PATH):
+        try:
+            with open(LINE_CONFIG_PATH, "r", encoding="utf-8") as f:
+                l_cfg = json.load(f)
+                if l_cfg.get("channel_access_token") and l_cfg.get("user_id"):
+                    from line_notifier import notify_line_daily, notify_line_weekly
+                    if is_sunday:
+                        print("Dispatching weekly report notification to Line OA...")
+                        notify_line_weekly(upcoming_monday_str)
+                    elif is_alert_day:
+                        print("Dispatching daily warning notification to Line OA...")
+                        notify_line_daily(date_str)
+                    else:
+                        print("[Info] Today is a smooth, normal day. Skipping Line OA push to prevent user fatigue.")
+        except Exception as e:
+            print(f"Failed to run Line OA notification logic: {e}")
+    else:
+        print("[Info] Line OA is not configured yet. Run 'python line_notifier.py --setup' to bind it.")
         
     return full_state_payload
 

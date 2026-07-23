@@ -3,6 +3,7 @@ import os
 import json
 import argparse
 import requests
+from datetime import datetime, timedelta
 
 CONFIG_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "telegram_config.json")
 DEFAULT_TOKEN = "8454938807:AAG45XW_ApFyLTdoaA2IhG2Bl6kBoQDTghw"
@@ -120,7 +121,7 @@ def notify_daily(date_str):
             with open(share_card_path, "rb") as photo_file:
                 files = {"photo": photo_file}
                 data = {"chat_id": chat_id, "caption": message_text}
-                r = requests.post(photo_url, data=data, files=files)
+                r = requests.post(photo_url, data=data, files=files, timeout=10)
                 if r.status_code == 200:
                     print(f"✅ 成功發送 {date_str} 分享圖卡及天時訊息至 Telegram！")
                     sent_photo = True
@@ -133,7 +134,7 @@ def notify_daily(date_str):
     if not sent_photo:
         text_url = f"https://api.telegram.org/bot{token}/sendMessage"
         payload = {"chat_id": chat_id, "text": message_text}
-        r = requests.post(text_url, json=payload)
+        r = requests.post(text_url, json=payload, timeout=10)
         if r.status_code == 200:
             print(f"✅ 成功發送 {date_str} 純文字天時訊息至 Telegram！")
         else:
@@ -142,18 +143,73 @@ def notify_daily(date_str):
             
     return True
 
+def notify_weekly(start_date_str):
+    config = load_config()
+    token = config.get("bot_token")
+    chat_id = config.get("chat_id")
+    
+    if not token or not chat_id:
+        print("❌ 錯誤：Telegram 尚未設定。請執行 python telegram_notifier.py --setup 進行設定綁定。")
+        return False
+        
+    # Locate weekly chart
+    weekly_chart_path = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)),
+        "daily_outputs", "weekly_charts", f"weekly_chart_{start_date_str}.png"
+    )
+    
+    if not os.path.exists(weekly_chart_path):
+        print(f"❌ 錯誤：找不到 weekly_chart_{start_date_str}.png")
+        return False
+        
+    # Calculate end date
+    start_date = datetime.strptime(start_date_str, "%Y-%m-%d")
+    end_date = start_date + timedelta(days=6)
+    end_date_str = end_date.strftime("%Y-%m-%d")
+    
+    message_text = (
+        f"【Sky Timing 欽天監｜本週天時天氣預報 — {start_date_str} ~ {end_date_str}】\n\n"
+        "📊 本週天時能量走勢與波動預報已繪製完成！\n"
+        "請參考下方「本週天時天氣圖」卡片。\n\n"
+        "宜依氣場起伏合理調整起居作息與事務佈局。\n\n"
+        "🌐 完整天時週報與每日詳細觀測：\n"
+        "https://kern0907-303.github.io/Sky-Timing/\n"
+    )
+    
+    photo_url = f"https://api.telegram.org/bot{token}/sendPhoto"
+    try:
+        with open(weekly_chart_path, "rb") as photo_file:
+            files = {"photo": photo_file}
+            data = {"chat_id": chat_id, "caption": message_text}
+            r = requests.post(photo_url, data=data, files=files, timeout=10)
+            if r.status_code == 200:
+                print(f"✅ 成功發送週報天氣圖卡至 Telegram！")
+                return True
+            else:
+                print(f"❌ 發送週報圖卡失敗，狀態碼：{r.status_code}")
+                # Fallback
+                text_url = f"https://api.telegram.org/bot{token}/sendMessage"
+                payload = {"chat_id": chat_id, "text": message_text}
+                requests.post(text_url, json=payload, timeout=10)
+                return False
+    except Exception as e:
+        print(f"❌ 發送週報圖卡發生異常：{e}")
+        return False
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Qin Tian Jian Telegram Notifier")
     parser.add_argument("--setup", action="store_true", help="Run interactive bot chat_id binding setup")
     parser.add_argument("--date", type=str, help="YYYY-MM-DD date to send notification for")
+    parser.add_argument("--weekly", type=str, help="YYYY-MM-DD Monday start date to send weekly notification for")
     
     args = parser.parse_args()
     if args.setup:
         run_setup()
+    elif args.weekly:
+        notify_weekly(args.weekly)
     elif args.date:
         notify_daily(args.date)
     else:
         # Default to today
-        from datetime import datetime, timedelta
         taipei_today = (datetime.utcnow() + timedelta(hours=8)).strftime("%Y-%m-%d")
         notify_daily(taipei_today)

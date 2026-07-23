@@ -284,37 +284,79 @@ def ask_daily_timing_relation(timing_data, vectors, forces, question, event_type
     suitability = "平順中立"
     advice = "適合按部就班推進。"
     
+    # Group categories
+    expansion_actions = ["啟動", "合約", "情感約會", "大宗交易", "移徙入宅", "靈感企劃"]
+    consensus_actions = ["關係溝通", "商談"]
+    contraction_actions = ["關係斷捨離", "收尾", "大掃除"]
+    reflective_actions = ["冥想修行", "讀書學習", "調整", "靈感寫作", "收支結算"]
+    
     if clash:
-        if event_type in ["合約", "啟動", "情感約會"]:
+        if event_type in expansion_actions:
             suitability = "面臨阻力與考驗"
-            advice = "今日日值歲破或能量衝突強烈，對於需要和諧共識的「情感約會」或重大利益的「簽約啟動」變數極多，建議放緩推進節奏，避免強求結果。"
+            advice = f"今日日值歲破或能量衝突強烈，對於需要和諧共識或重大投入的「{event_type}」變數極多，建議放緩推進節奏，避免強求結果。"
+        elif event_type in consensus_actions or event_type == "靈感企劃":
+            suitability = "溝通變數增多"
+            advice = f"今日氣場存在交戰與沖煞，在「{event_type}」中容易出現意見分歧或思緒被打斷，建議抱持包容心，多聽少說，避免在此時做出硬性承諾。"
+        elif event_type in contraction_actions:
+            suitability = "阻力偏大且易耗能"
+            advice = f"天時能量波動劇烈，進行「{event_type}」時可能遇到拖延或突發枝節，且體力消耗較快，建議量力而行，不宜過度勉強。"
+        elif event_type in reflective_actions:
+            suitability = "心神易受干擾"
+            advice = f"今日外界干擾氣場較強，進行「{event_type}」時可能感到心神不寧或財務數據混亂。建議以小規模微調、記錄零散靈感或複習舊知識為主，避免做重大定案。"
         else:
             suitability = "變數與波動較多"
             advice = "天時能量存在交戰或沖煞，各類事務進展易生突發枝節，建議以彈性防禦為主，避免做重大定案。"
             
     elif jc in ["建", "成", "開"]:
-        if event_type in ["啟動", "合約", "情感約會"]:
+        if event_type in expansion_actions:
             suitability = "深受天時支持"
-            advice = "當前建除十二神氣場生機勃勃，對於「啟動計畫」或「情感約會/關係推進」等向外建立秩序的事務非常有利，能獲得強勁的順向推動力。"
-        elif event_type in ["關係斷捨離", "收尾"]:
-            suitability = "阻力稍大"
-            advice = "今日天時氣流偏向擴張與建立，對於「收尾結束」或「關係切割」等收斂性事務容易產生拖延，建議先作理性評估，暫緩強硬切斷。"
+            advice = f"當前建除十二神氣場生機勃勃，主建立與擴充。對於向外開展、注入新生動能的「{event_type}」非常有利，能獲得強勁的順向推動力。"
+        elif event_type in consensus_actions or event_type == "讀書學習":
+            suitability = "有利拓展與交流"
+            advice = f"氣場開放，有利於「{event_type}」中的思想碰撞與秩序建立，容易達成共識或快速吸收新知識，是向外連結的極佳時機。"
+        elif event_type in contraction_actions or event_type == "收支結算":
+            suitability = "收斂阻力稍大"
+            advice = f"今日天時偏向擴張與建立，對於「{event_type}」等收尾或收納事宜容易產生拖延，建議先做評估與整理，暫緩強硬切斷。"
+        elif event_type in ["冥想修行", "調整", "靈感寫作"]:
+            suitability = "宜開啟新方向"
+            advice = f"今日適合為「{event_type}」規劃全新架構或開啟新篇章。適合冥想未來藍圖，或動筆寫下全新靈感的大綱框架。"
+        else:
+            suitability = "天時平順支持"
+            advice = "天地氣流順暢，適合積極推動各項事務。"
             
     elif jc in ["收", "閉", "執"]:
-        if event_type in ["收尾", "關係斷捨離"]:
-            suitability = "利於收斂與斷捨離"
-            advice = "本日能量主軸為收存與閉藏，最適合將多餘、耗能的事務收尾，或為不健康的感情關係進行「斷捨離」整理，能獲得清明與安定力。"
-        elif event_type in ["啟動", "情感約會"]:
+        if event_type in contraction_actions or event_type == "收支結算":
+            suitability = "極利於收斂與歸檔"
+            advice = f"本日能量主軸為收存與閉藏，最適合將多餘、耗能的事務收尾，或為不健康的關係/空間進行「{event_type}」整理，能獲得極佳的清明與安定力。"
+        elif event_type in ["冥想修行", "讀書學習", "靈感寫作"]:
+            suitability = "深受天時支持"
+            advice = f"天時氣流趨向內斂收攏，是進行「{event_type}」的黃金時機。此時心靈平靜、注意力容易集中，極易進入深度思考或靈感整理狀態。"
+        elif event_type in consensus_actions or event_type == "調整":
+            suitability = "偏向保守內省"
+            advice = f"大氣動能主收攏，在此氣流下進行「{event_type}」應避免過度強求對方的讓步，建議多從內部架構或底層邏輯進行微調，以守代攻。"
+        elif event_type in expansion_actions:
             suitability = "拓展受限"
-            advice = "大氣動能處於收斂封閉階段，此時若強行推動「告白約會」或「啟動新計畫」，容易感到冷淡或推進困難，建議改採低調儲備策略。"
+            advice = f"大氣動能處於收斂封閉階段，此時若強行推動「{event_type}」等擴張性計劃，容易感到進展緩慢或反響冷淡，建議改採低調儲備與非公開測試策略。"
+        else:
+            suitability = "保守穩健為宜"
+            advice = "能量趨於收縮，適合內部整理、補足細節，不宜盲目擴張。"
             
     elif jc in ["破", "危", "除"]:
-        if event_type in ["關係斷捨離", "調整"]:
-            suitability = "適合破舊立新"
-            advice = "今日建除氣場帶有「破除、清除舊疾」的強大動能，若要進行「策略架構調整」或「結束不健康關係」，能順應天時快速排除障礙、重獲新生。"
-        elif event_type in ["合約", "情感約會"]:
-            suitability = "變數較多"
-            advice = "大氣動能帶有波動與破裂之意，在此氣流下進行「簽約交易」或「情感推進」容易因誤解而引發摩擦，建議抱持謹慎或適度推遲。"
+        if event_type in contraction_actions or event_type in ["調整", "收支結算"]:
+            suitability = "極佳的破舊立新時機"
+            advice = f"今日建除氣場帶有「破除、清除舊疾」的強大動能，若要進行「{event_type}」，能順應天時快速排除障礙、重獲新生，是除舊迎新的最佳時機。"
+        elif event_type in ["冥想修行", "讀書學習", "靈感寫作"]:
+            suitability = "適合打破瓶頸"
+            advice = f"今日適合打破思維定勢。在進行「{event_type}」時，若能主動挑戰難關、顛覆舊有認知或清除心靈毒素，將有突破性的收穫。"
+        elif event_type in consensus_actions or event_type == "靈感企劃":
+            suitability = "意見易生分歧"
+            advice = f"大氣中帶有碰撞與破裂的動能，進行「{event_type}」時容易因觀點不同而引發摩擦，建議保持彈性與冷靜，多加聆聽，避免情緒化爭執。"
+        elif event_type in expansion_actions:
+            suitability = "變數與衝突較多"
+            advice = f"大氣動能帶有波動與破裂之意，在此氣流下強行推動「{event_type}」等剛性契約或關係建立，容易因誤解而留下隱患，建議壓後或保持高度謹慎。"
+        else:
+            suitability = "變革與重組期"
+            advice = "氣場較為波動，適合清理舊包袱，不宜草率做出重大承諾。"
             
     response = (
         f"【天時關聯分析】：您所問的「{question}」（類型：{event_type}），在今日天時背景下，"
@@ -324,3 +366,4 @@ def ask_daily_timing_relation(timing_data, vectors, forces, question, event_type
         f"【個人建議節奏】：穩健且順勢而為，不盲目逆氣場強求。"
     )
     return response
+
