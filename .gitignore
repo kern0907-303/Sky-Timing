@@ -6,3 +6,4 @@ telegram_config.json
 cron_spec
 cron.log
 daily_cron.sh
+.git-credentials
