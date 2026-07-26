@@ -167,14 +167,24 @@ def notify_weekly(start_date_str):
     end_date = start_date + timedelta(days=6)
     end_date_str = end_date.strftime("%Y-%m-%d")
     
-    message_text = (
-        f"【Sky Timing 欽天監｜本週天時天氣預報 — {start_date_str} ~ {end_date_str}】\n\n"
-        "📊 本週天時能量走勢與波動預報已繪製完成！\n"
-        "請參考下方「本週天時天氣圖」卡片。\n\n"
-        "宜依氣場起伏合理調整起居作息與事務佈局。\n\n"
-        "🌐 完整天時週報與每日詳細觀測：\n"
-        "https://kern0907-303.github.io/Sky-Timing/\n"
+    # Check if rich weekly report text exists
+    weekly_text_path = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)),
+        "daily_outputs", "weekly_charts", f"weekly_report_text_{start_date_str}.txt"
     )
+    
+    if os.path.exists(weekly_text_path):
+        with open(weekly_text_path, "r", encoding="utf-8") as f:
+            message_text = f.read()
+    else:
+        message_text = (
+            f"【Sky Timing 欽天監｜本週天時天氣預報 — {start_date_str} ~ {end_date_str}】\n\n"
+            "📊 本週天時能量走勢與波動預報已繪製完成！\n"
+            "請參考下方「本週天時天氣圖」卡片。\n\n"
+            "宜依氣場起伏合理調整起居作息與事務佈局。\n\n"
+            "🌐 完整天時週報與每日詳細觀測：\n"
+            "https://kern0907-303.github.io/Sky-Timing/\n"
+        )
     
     photo_url = f"https://api.telegram.org/bot{token}/sendPhoto"
     try:

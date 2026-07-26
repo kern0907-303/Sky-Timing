@@ -29,10 +29,139 @@ def compute_energy_score(vectors):
     score = 50 + (active - stable - volatile * 0.5) * 35
     return max(10, min(95, round(score)))
 
+def generate_weekly_report_text(start_date_str):
+    """
+    Generates an engaging, high-curiosity traditional Chinese weekly summary message
+    based on the calculated daily states of the upcoming week.
+    """
+    week_dates = get_week_dates(start_date_str)
+    week_data = []
+    
+    day_names_cn = ["週一", "週二", "週三", "週四", "週五", "週六", "週日"]
+    rhythm_emojis = {
+        "啟動": "🌱",
+        "推進": "🚀",
+        "穩定": "🛡️",
+        "整合": "🤝",
+        "收斂": "🍂",
+        "調整": "⚙️",
+        "轉換": "🔄",
+        "暫停": "🛑"
+    }
+    
+    for i, d_str in enumerate(week_dates):
+        state = get_or_create_state(d_str)
+        timing = state["raw_timing_data"]
+        vectors = state["semantic_vectors"]
+        score = compute_energy_score(vectors)
+        
+        # Check clash/transition
+        is_transition = timing.get("is_transition_day", 0) == 1
+        is_year_day_clash = timing.get("is_year_day_clash", 0) == 1
+        has_clash = timing.get("has_clash", 0) == 1
+        
+        d_obj = datetime.strptime(d_str, "%Y-%m-%d")
+        date_short = d_obj.strftime("%m/%d")
+        
+        week_data.append({
+            "date": d_str,
+            "date_short": date_short,
+            "day_name": day_names_cn[i],
+            "rhythm": state["daily_rhythm"],
+            "score": score,
+            "is_transition": is_transition,
+            "is_year_day_clash": is_year_day_clash,
+            "has_clash": has_clash,
+            "solar_term": timing.get("solar_term", "")
+        })
+        
+    # 1. Find energy peak and valley
+    peak_day = max(week_data, key=lambda x: x["score"])
+    valley_day = min(week_data, key=lambda x: x["score"])
+    
+    # 2. Find any warning or transition day
+    transition_days = [x for x in week_data if x["is_transition"]]
+    clash_days = [x for x in week_data if x["is_year_day_clash"] or x["has_clash"]]
+    
+    # 3. Construct 3 key highlights
+    highlights = []
+    
+    # Highlight 1: Peak
+    h_rhythm_emoji = rhythm_emojis.get(peak_day["rhythm"], "✨")
+    highlights.append(
+        f"📈 亮點一：【能量頂峰 • {peak_day['day_name']}（{peak_day['date_short']}）】\n"
+        f"👉 本週天時能量最高點（指數達 {peak_day['score']}%），氣場朝向「{peak_day['rhythm']} {h_rhythm_emoji}」。\n"
+        f"💡 欽天監建議：適合全速推進、擴展行動邊界，或執行最核心的關鍵計畫！"
+    )
+    
+    # Highlight 2: Valley or Clash
+    if clash_days:
+        clash_day = clash_days[0]
+        c_rhythm_emoji = rhythm_emojis.get(clash_day["rhythm"], "✨")
+        clash_type = "歲破大沖" if clash_day["is_year_day_clash"] else "地支相沖"
+        highlights.append(
+            f"⚡ 亮點二：【波動預警 • {clash_day['day_name']}（{clash_day['date_short']}）】\n"
+            f"👉 今日逢「{clash_type}」，能量指數僅 {clash_day['score']}%，氣場朝向「{clash_day['rhythm']} {c_rhythm_emoji}」。\n"
+            f"💡 欽天監建議：天地磁場正面相沖，行事易有變數或情緒起伏，宜保守靜守，忌強行推進。"
+        )
+    else:
+        v_rhythm_emoji = rhythm_emojis.get(valley_day["rhythm"], "✨")
+        highlights.append(
+            f"📉 亮點二：【能量谷底 • {valley_day['day_name']}（{valley_day['date_short']}）】\n"
+            f"👉 本週天時能量最低點（指數僅 {valley_day['score']}%），氣場朝向「{valley_day['rhythm']} {v_rhythm_emoji}」。\n"
+            f"💡 欽天監建議：今日宜休養生息、重整內部，防禦大於進攻，靜待轉機。"
+        )
+        
+    # Highlight 3: Transition or Volatility
+    if transition_days:
+        t_day = transition_days[0]
+        t_rhythm_emoji = rhythm_emojis.get(t_day["rhythm"], "✨")
+        term_name = t_day["solar_term"]
+        highlights.append(
+            f"🔄 亮點三：【氣場轉換 • {t_day['day_name']}（{t_day['date_short']}）】\n"
+            f"👉 今日逢節氣【{term_name}】，氣場朝向「{t_day['rhythm']} {t_rhythm_emoji}」。\n"
+            f"💡 欽天監建議：節氣交替天地能量轉換劇烈，人心易浮躁，適合梳理節奏，順應能量自然過渡。"
+        )
+    else:
+        # Fallback highlight
+        second_highest = sorted(week_data, key=lambda x: x["score"], reverse=True)[1]
+        sh_rhythm_emoji = rhythm_emojis.get(second_highest["rhythm"], "✨")
+        highlights.append(
+            f"🤝 亮點三：【和諧對接 • {second_highest['day_name']}（{second_highest['date_short']}）】\n"
+            f"👉 本週次佳推進日（能量指數 {second_highest['score']}%），氣場朝向「{second_highest['rhythm']} {sh_rhythm_emoji}」。\n"
+            f"💡 欽天監建議：適合商務會面、溝通對接或整理規劃，多方借力合作。"
+        )
+
+    # 4. Construct Calendar Timeline
+    calendar_lines = []
+    for day in week_data:
+        r_emoji = rhythm_emojis.get(day["rhythm"], "✨")
+        alert_flag = " ⚠️" if (day["is_year_day_clash"] or day["has_clash"] or day["is_transition"]) else ""
+        calendar_lines.append(f"{r_emoji} {day['day_name']}（{day['date_short']}）：{day['rhythm']}{alert_flag}")
+        
+    start_date_obj = datetime.strptime(start_date_str, "%Y-%m-%d")
+    end_date_obj = start_date_obj + timedelta(days=6)
+    end_date_str = end_date_obj.strftime("%Y-%m-%d")
+    
+    text = (
+        f"🌌【Sky Timing 欽天監｜本週天時天氣預報 — {start_date_str} ~ {end_date_str}】🌌\n\n"
+        f"📊 本週能量波動頻率已繪製完成！大氣局勢充滿轉折起伏。以下為您整理「本週三大天時亮點」：\n\n"
+        + "\n\n".join(highlights) + "\n\n"
+        f"━━━━━━━━━━━━━━━━\n"
+        f"📅 本週天時運行快報：\n"
+        + "\n".join(calendar_lines) + "\n\n"
+        f"━━━━━━━━━━━━━━━━\n"
+        f"❓ 想知道自己本週的各項計畫如何借力天時？\n"
+        f"👉 點擊下方圖片或連結，查看完整的「本週天時能量波動折線圖」與每日詳細觀測！\n\n"
+        f"🌐 完整天時週報與每日詳細觀測：\n"
+        f"🔗 https://kern0907-303.github.io/Sky-Timing/\n"
+    )
+    return text
+
 def generate_weekly_chart(start_date_str):
     """
     Queries/generates the 7 days of the week starting from start_date_str,
-    renders weekly_chart.html, and screenshots it to a PNG.
+    renders weekly_chart.html, and screenshots it to a PNG. Also generates a rich report text.
     """
     week_dates = get_week_dates(start_date_str)
     week_data = []
@@ -97,6 +226,13 @@ def generate_weekly_chart(start_date_str):
     temp_html_path = os.path.join(output_dir, f"temp_weekly_chart_{start_date_str}.html")
     with open(temp_html_path, "w", encoding="utf-8") as f:
         f.write(rendered_html)
+        
+    # Generate and save rich report text message
+    weekly_text = generate_weekly_report_text(start_date_str)
+    weekly_text_path = os.path.join(output_dir, f"weekly_report_text_{start_date_str}.txt")
+    with open(weekly_text_path, "w", encoding="utf-8") as f:
+        f.write(weekly_text)
+    print(f"Weekly rich report text generated at: {weekly_text_path}")
         
     # Output PNG path
     output_png_path = os.path.join(output_dir, f"weekly_chart_{start_date_str}.png")
