@@ -89,7 +89,7 @@ def generate_weekly_report_text(start_date_str):
     # Highlight 1: Peak
     h_rhythm_emoji = rhythm_emojis.get(peak_day["rhythm"], "✨")
     highlights.append(
-        f"📈 亮點一：【能量頂峰 • {peak_day['day_name']}（{peak_day['date_short']}）】\n"
+        f"📈 【能量頂峰 • {peak_day['day_name']}（{peak_day['date_short']}）】\n"
         f"👉 本週天時能量最高點（指數達 {peak_day['score']}%），氣場朝向「{peak_day['rhythm']} {h_rhythm_emoji}」。\n"
         f"💡 欽天監建議：適合全速推進、擴展行動邊界，或執行最核心的關鍵計畫！"
     )
@@ -100,14 +100,14 @@ def generate_weekly_report_text(start_date_str):
         c_rhythm_emoji = rhythm_emojis.get(clash_day["rhythm"], "✨")
         clash_type = "歲破大沖" if clash_day["is_year_day_clash"] else "地支相沖"
         highlights.append(
-            f"⚡ 亮點二：【波動預警 • {clash_day['day_name']}（{clash_day['date_short']}）】\n"
+            f"⚡ 【波動預警 • {clash_day['day_name']}（{clash_day['date_short']}）】\n"
             f"👉 今日逢「{clash_type}」，能量指數僅 {clash_day['score']}%，氣場朝向「{clash_day['rhythm']} {c_rhythm_emoji}」。\n"
             f"💡 欽天監建議：天地磁場正面相沖，行事易有變數或情緒起伏，宜保守靜守，忌強行推進。"
         )
     else:
         v_rhythm_emoji = rhythm_emojis.get(valley_day["rhythm"], "✨")
         highlights.append(
-            f"📉 亮點二：【能量谷底 • {valley_day['day_name']}（{valley_day['date_short']}）】\n"
+            f"📉 【能量谷底 • {valley_day['day_name']}（{valley_day['date_short']}）】\n"
             f"👉 本週天時能量最低點（指數僅 {valley_day['score']}%），氣場朝向「{valley_day['rhythm']} {v_rhythm_emoji}」。\n"
             f"💡 欽天監建議：今日宜休養生息、重整內部，防禦大於進攻，靜待轉機。"
         )
@@ -118,7 +118,7 @@ def generate_weekly_report_text(start_date_str):
         t_rhythm_emoji = rhythm_emojis.get(t_day["rhythm"], "✨")
         term_name = t_day["solar_term"]
         highlights.append(
-            f"🔄 亮點三：【氣場轉換 • {t_day['day_name']}（{t_day['date_short']}）】\n"
+            f"🔄 【氣場轉換 • {t_day['day_name']}（{t_day['date_short']}）】\n"
             f"👉 今日逢節氣【{term_name}】，氣場朝向「{t_day['rhythm']} {t_rhythm_emoji}」。\n"
             f"💡 欽天監建議：節氣交替天地能量轉換劇烈，人心易浮躁，適合梳理節奏，順應能量自然過渡。"
         )
@@ -127,7 +127,7 @@ def generate_weekly_report_text(start_date_str):
         second_highest = sorted(week_data, key=lambda x: x["score"], reverse=True)[1]
         sh_rhythm_emoji = rhythm_emojis.get(second_highest["rhythm"], "✨")
         highlights.append(
-            f"🤝 亮點三：【和諧對接 • {second_highest['day_name']}（{second_highest['date_short']}）】\n"
+            f"🤝 【和諧對接 • {second_highest['day_name']}（{second_highest['date_short']}）】\n"
             f"👉 本週次佳推進日（能量指數 {second_highest['score']}%），氣場朝向「{second_highest['rhythm']} {sh_rhythm_emoji}」。\n"
             f"💡 欽天監建議：適合商務會面、溝通對接或整理規劃，多方借力合作。"
         )
@@ -145,7 +145,7 @@ def generate_weekly_report_text(start_date_str):
     
     text = (
         f"🌌【Sky Timing 欽天監｜本週天時天氣預報 — {start_date_str} ~ {end_date_str}】🌌\n\n"
-        f"📊 本週能量波動頻率已繪製完成！大氣局勢充滿轉折起伏。以下為您整理「本週三大天時亮點」：\n\n"
+        f"📊 本週能量波動頻率已繪製完成！大氣局勢充滿轉折起伏。以下為您整理「本週三大天時關鍵狀態」：\n\n"
         + "\n\n".join(highlights) + "\n\n"
         f"━━━━━━━━━━━━━━━━\n"
         f"📅 本週天時運行快報：\n"
