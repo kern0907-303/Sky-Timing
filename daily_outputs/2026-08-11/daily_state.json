@@ -1,0 +1,69 @@
+{
+  "date": "2026-08-11",
+  "timezone": "Asia/Taipei",
+  "city": "Taipei",
+  "raw_timing_data": {
+    "solar_date": "2026-08-11",
+    "lunar_date": "二〇二六年六月廿九",
+    "solar_term": "立秋",
+    "is_transition_day": 0,
+    "prev_jieqi": "立秋",
+    "next_jieqi": "处暑",
+    "month_command": "季夏月令",
+    "year_ganzhi": "丙午",
+    "month_ganzhi": "丙申",
+    "day_ganzhi": "丁巳",
+    "hour_ganzhi": "丙午",
+    "jianchu": "收",
+    "zhishen": "天德",
+    "xiu": "觜",
+    "nayin": "沙中土",
+    "wuxing": "火火",
+    "clash": "(辛亥)猪",
+    "has_clash": 0,
+    "has_combo": 0,
+    "is_year_day_clash": 0,
+    "yueling_wuxing": "火金",
+    "jishen": "月德合, 六合, 五富, 要安",
+    "xiongsha": "河魁, 劫煞, 地囊, 重日"
+  },
+  "semantic_vectors": {
+    "generation": 0.3,
+    "expansion": 0.4,
+    "stabilization": 0.5,
+    "circulation": 0.5,
+    "contraction": 0.8,
+    "transformation": 0.3,
+    "disruption": 0.3,
+    "uncertainty": 0.3
+  },
+  "primary_force": "收斂、回收、沉澱、保存",
+  "secondary_force": "穩定、固定、承載、維持",
+  "constraint_force": "穩定、固定、承載、維持",
+  "daily_rhythm": "收斂",
+  "daily_summary": "今日主要方向：收斂。支持力量：收斂、回收、沉澱、保存。限制力量：穩定、固定、承載、維持。運行節奏：今日大氣能量向內聚合，宜進行覆盤整理與項目結案收尾。。天地層面呈現「收斂」大氣，建議順應此運行節律，關注「收尾與沉澱的過程中，你是在遺憾...」之自省，避免逆勢強求。",
+  "reflection_question": "收尾與沉澱的過程中，你是在遺憾失去，還是在為新種子騰出空間？",
+  "content_details": {
+    "one_liner": "今日大氣氣場轉向【收斂】律動，今日大氣能量向內聚合，宜進行覆盤整理與項目結案收尾。 力量分布平緩，天地動能和諧。",
+    "keywords": [
+      "保存",
+      "承載",
+      "傳遞"
+    ],
+    "support_points": [
+      "核心底座穩固，防守與加固基礎的效率極高。",
+      "多方對接與溝通順暢，利於打通合作管道。"
+    ],
+    "risk_points": [
+      "天地動能減慢，過度擴張易導致內部防線空虛。"
+    ],
+    "daily_rhythm": "收斂",
+    "daily_rhythm_reason": "今日大氣能量向內聚合，宜進行覆盤整理與項目結案收尾。",
+    "tian_obs": "天地層：當前運行至立秋節氣，月令以【火金】氣場主導，本日值神為【天德】、建除十二神為【收】。這代表自然界處於「今日大氣能量向內聚合，宜進行覆盤整理與項目結案收尾」的背景週期中。",
+    "group_obs": "環境層：環境表現出「收斂、回收、沉澱、保存」的普遍張力。容易感到溝通成本平緩，適合透過「收斂」的節奏來對接外部環境。",
+    "person_obs": "個人層：注意力將聚焦在「穩定、固定、承載、維持」相關事務。當前能量運作和諧，無顯著阻力與拉扯感，適合順勢推進既定計劃。",
+    "question": "收尾與沉澱的過程中，你是在遺憾失去，還是在為新種子騰出空間？",
+    "summary": "今日主要方向：收斂。支持力量：收斂、回收、沉澱、保存。限制力量：穩定、固定、承載、維持。運行節奏：今日大氣能量向內聚合，宜進行覆盤整理與項目結案收尾。。天地層面呈現「收斂」大氣，建議順應此運行節律，關注「收尾與沉澱的過程中，你是在遺憾...」之自省，避免逆勢強求。",
+    "synthesis": "【天時解構】天地能量運作和諧，無顯著阻力與摩擦。適合順勢而為，按部就班推進各項既定計劃。"
+  }
+}
