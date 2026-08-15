@@ -1,0 +1,69 @@
+{
+  "date": "2026-08-16",
+  "timezone": "Asia/Taipei",
+  "city": "Taipei",
+  "raw_timing_data": {
+    "solar_date": "2026-08-16",
+    "lunar_date": "二〇二六年七月初四",
+    "solar_term": "立秋",
+    "is_transition_day": 0,
+    "prev_jieqi": "立秋",
+    "next_jieqi": "处暑",
+    "month_command": "孟秋月令",
+    "year_ganzhi": "丙午",
+    "month_ganzhi": "丙申",
+    "day_ganzhi": "壬戌",
+    "hour_ganzhi": "丙午",
+    "jianchu": "满",
+    "zhishen": "司命",
+    "xiu": "星",
+    "nayin": "大海水",
+    "wuxing": "水土",
+    "clash": "(丙辰)龙",
+    "has_clash": 0,
+    "has_combo": 0,
+    "is_year_day_clash": 0,
+    "yueling_wuxing": "火金",
+    "jishen": "月德, 母仓, 月恩, 四相",
+    "xiongsha": "厌对, 招摇, 天狗, 九空"
+  },
+  "semantic_vectors": {
+    "generation": 0.45,
+    "expansion": 0.3,
+    "stabilization": 0.45,
+    "circulation": 0.3,
+    "contraction": 0.3,
+    "transformation": 0.3,
+    "disruption": 0.3,
+    "uncertainty": 0.3
+  },
+  "primary_force": "建立、形成、定位",
+  "secondary_force": "穩定、固定、承載、維持",
+  "constraint_force": "穩定、固定、承載、維持",
+  "daily_rhythm": "啟動",
+  "daily_summary": "今日主要方向：啟動。支持力量：建立、形成、定位。限制力量：穩定、固定、承載、維持。運行節奏：今日氣運聚焦於奠基與開端，有利於確立新項目的起點。。天地層面呈現「啟動」大氣，建議順應此運行節律，關注「當你著手建構新項目時，核心的定...」之自省，避免逆勢強求。",
+  "reflection_question": "當你著手建構新項目時，核心的定位與方向是否已經足夠清晰？",
+  "content_details": {
+    "one_liner": "今日大氣氣場轉向【啟動】律動，今日氣運聚焦於奠基與開端，有利於確立新項目的起點。 力量分布平緩，天地動能和諧。",
+    "keywords": [
+      "定位",
+      "承載",
+      "發布"
+    ],
+    "support_points": [
+      "結構正在成形，適合勾勒藍圖與確立起點。",
+      "核心底座穩固，防守與加固基礎的效率極高。"
+    ],
+    "risk_points": [
+      "氣場平穩，無顯著阻力，但需防範鬆懈。"
+    ],
+    "daily_rhythm": "啟動",
+    "daily_rhythm_reason": "今日氣運聚焦於奠基與開端，有利於確立新項目的起點。",
+    "tian_obs": "天地層：當前運行至立秋節氣，月令以【火金】氣場主導，本日值神為【司命】、建除十二神為【满】。這代表自然界處於「今日氣運聚焦於奠基與開端，有利於確立新項目的起點」的背景週期中。",
+    "group_obs": "環境層：環境表現出「建立、形成、定位」的普遍張力。容易感到溝通成本平緩，適合透過「啟動」的節奏來對接外部環境。",
+    "person_obs": "個人層：注意力將聚焦在「穩定、固定、承載、維持」相關事務。當前能量運作和諧，無顯著阻力與拉扯感，適合順勢推進既定計劃。",
+    "question": "當你著手建構新項目時，核心的定位與方向是否已經足夠清晰？",
+    "summary": "今日主要方向：啟動。支持力量：建立、形成、定位。限制力量：穩定、固定、承載、維持。運行節奏：今日氣運聚焦於奠基與開端，有利於確立新項目的起點。。天地層面呈現「啟動」大氣，建議順應此運行節律，關注「當你著手建構新項目時，核心的定...」之自省，避免逆勢強求。",
+    "synthesis": "【天時解構】天地能量運作和諧，無顯著阻力與摩擦。適合順勢而為，按部就班推進各項既定計劃。"
+  }
+}
