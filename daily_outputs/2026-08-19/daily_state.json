@@ -1,0 +1,68 @@
+{
+  "date": "2026-08-19",
+  "timezone": "Asia/Taipei",
+  "city": "Taipei",
+  "raw_timing_data": {
+    "solar_date": "2026-08-19",
+    "lunar_date": "二〇二六年七月初七",
+    "solar_term": "立秋",
+    "is_transition_day": 0,
+    "prev_jieqi": "立秋",
+    "next_jieqi": "处暑",
+    "month_command": "孟秋月令",
+    "year_ganzhi": "丙午",
+    "month_ganzhi": "丙申",
+    "day_ganzhi": "乙丑",
+    "hour_ganzhi": "壬午",
+    "jianchu": "执",
+    "zhishen": "明堂",
+    "xiu": "轸",
+    "nayin": "海中金",
+    "wuxing": "木土",
+    "clash": "(己未)羊",
+    "has_clash": 0,
+    "has_combo": 0,
+    "is_year_day_clash": 0,
+    "yueling_wuxing": "火金",
+    "jishen": "天恩, 母仓, 明堂",
+    "xiongsha": "小耗, 归忌"
+  },
+  "semantic_vectors": {
+    "generation": 0.3,
+    "expansion": 0.4,
+    "stabilization": 0.3,
+    "circulation": 0.5,
+    "contraction": 0.3,
+    "transformation": 0.3,
+    "disruption": 0.3,
+    "uncertainty": 0.3
+  },
+  "primary_force": "流動、交換、連結、傳遞",
+  "secondary_force": "擴散、開放、向外推動",
+  "constraint_force": "穩定、固定、承載、維持",
+  "daily_rhythm": "整合",
+  "daily_summary": "今日主要方向：整合。支持力量：流動、交換、連結、傳遞。限制力量：穩定、固定、承載、維持。運行節奏：今日能量利於多方連結，適合資訊交換、商務談判與資源整合。。天地層面呈現「整合」大氣，建議順應此運行節律，關注「資訊的加速流動中，你聽到的是有...」之自省，避免逆勢強求。",
+  "reflection_question": "資訊的加速流動中，你聽到的是有價值的共鳴，還是無意義的雜訊？",
+  "content_details": {
+    "one_liner": "今日大氣氣場轉向【整合】律動，今日能量利於多方連結，適合資訊交換、商務談判與資源整合。 力量分布平緩，天地動能和諧。",
+    "keywords": [
+      "傳遞",
+      "發布",
+      "定位"
+    ],
+    "support_points": [
+      "多方對接與溝通順暢，利於打通合作管道。"
+    ],
+    "risk_points": [
+      "氣場平穩，無顯著阻力，但需防範鬆懈。"
+    ],
+    "daily_rhythm": "整合",
+    "daily_rhythm_reason": "今日能量利於多方連結，適合資訊交換、商務談判與資源整合。",
+    "tian_obs": "天地層：當前運行至立秋節氣，月令以【火金】氣場主導，本日值神為【明堂】、建除十二神為【执】。這代表自然界處於「今日能量利於多方連結，適合資訊交換、商務談判與資源整合」的背景週期中。",
+    "group_obs": "環境層：環境表現出「流動、交換、連結、傳遞」的普遍張力。容易感到溝通成本平緩，適合透過「整合」的節奏來對接外部環境。",
+    "person_obs": "個人層：注意力將聚焦在「擴散、開放、向外推動」相關事務。當前能量運作和諧，無顯著阻力與拉扯感，適合順勢推進既定計劃。",
+    "question": "資訊的加速流動中，你聽到的是有價值的共鳴，還是無意義的雜訊？",
+    "summary": "今日主要方向：整合。支持力量：流動、交換、連結、傳遞。限制力量：穩定、固定、承載、維持。運行節奏：今日能量利於多方連結，適合資訊交換、商務談判與資源整合。。天地層面呈現「整合」大氣，建議順應此運行節律，關注「資訊的加速流動中，你聽到的是有...」之自省，避免逆勢強求。",
+    "synthesis": "【天時解構】天地能量運作和諧，無顯著阻力與摩擦。適合順勢而為，按部就班推進各項既定計劃。"
+  }
+}
