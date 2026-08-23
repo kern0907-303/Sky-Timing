@@ -1,0 +1,68 @@
+{
+  "date": "2026-08-24",
+  "timezone": "Asia/Taipei",
+  "city": "Taipei",
+  "raw_timing_data": {
+    "solar_date": "2026-08-24",
+    "lunar_date": "二〇二六年七月十二",
+    "solar_term": "处暑",
+    "is_transition_day": 0,
+    "prev_jieqi": "处暑",
+    "next_jieqi": "白露",
+    "month_command": "孟秋月令",
+    "year_ganzhi": "丙午",
+    "month_ganzhi": "丙申",
+    "day_ganzhi": "庚午",
+    "hour_ganzhi": "壬午",
+    "jianchu": "开",
+    "zhishen": "白虎",
+    "xiu": "心",
+    "nayin": "路旁土",
+    "wuxing": "金火",
+    "clash": "(甲子)鼠",
+    "has_clash": 0,
+    "has_combo": 0,
+    "is_year_day_clash": 0,
+    "yueling_wuxing": "火金",
+    "jishen": "天马, 时阳, 生气, 玉宇",
+    "xiongsha": "灾煞, 天火, 复日, 白虎"
+  },
+  "semantic_vectors": {
+    "generation": 0.3,
+    "expansion": 0.3,
+    "stabilization": 0.3,
+    "circulation": 0.3,
+    "contraction": 0.3,
+    "transformation": 0.3,
+    "disruption": 0.5,
+    "uncertainty": 0.3
+  },
+  "primary_force": "切割、瓦解、衝突、解除",
+  "secondary_force": "建立、形成、定位",
+  "constraint_force": "穩定、固定、承載、維持",
+  "daily_rhythm": "轉換",
+  "daily_summary": "今日主要方向：轉換。支持力量：切割、瓦解、衝突、解除。限制力量：穩定、固定、承載、維持。運行節奏：今日氣場帶有破舊迎新的力量，適合清理累贅、解除舊合約。。天地層面呈現「轉換」大氣，建議順應此運行節律，關注「當舊架構被迫崩解時，你是否做好...」之自省，避免逆勢強求。",
+  "reflection_question": "當舊架構被迫崩解時，你是否做好了迎接新生事物的心理準備？",
+  "content_details": {
+    "one_liner": "今日大氣氣場轉向【轉換】律動，今日氣場帶有破舊迎新的力量，適合清理累贅、解除舊合約。 力量分布平緩，天地動能和諧。",
+    "keywords": [
+      "打破",
+      "定位",
+      "發布"
+    ],
+    "support_points": [
+      "天地能量均衡，利於例行事務推進。"
+    ],
+    "risk_points": [
+      "舊包袱與過時架構面臨出清摩擦，需注意解約風險。"
+    ],
+    "daily_rhythm": "轉換",
+    "daily_rhythm_reason": "今日氣場帶有破舊迎新的力量，適合清理累贅、解除舊合約。",
+    "tian_obs": "天地層：當前運行至处暑節氣，月令以【火金】氣場主導，本日值神為【白虎】、建除十二神為【开】。這代表自然界處於「今日氣場帶有破舊迎新的力量，適合清理累贅、解除舊合約」的背景週期中。",
+    "group_obs": "環境層：環境表現出「切割、瓦解、衝突、解除」的普遍張力。容易感到溝通成本增加，適合透過「轉換」的節奏來對接外部環境。",
+    "person_obs": "個人層：注意力將聚焦在「建立、形成、定位」相關事務。當前能量運作和諧，無顯著阻力與拉扯感，適合順勢推進既定計劃。",
+    "question": "當舊架構被迫崩解時，你是否做好了迎接新生事物的心理準備？",
+    "summary": "今日主要方向：轉換。支持力量：切割、瓦解、衝突、解除。限制力量：穩定、固定、承載、維持。運行節奏：今日氣場帶有破舊迎新的力量，適合清理累贅、解除舊合約。。天地層面呈現「轉換」大氣，建議順應此運行節律，關注「當舊架構被迫崩解時，你是否做好...」之自省，避免逆勢強求。",
+    "synthesis": "【天時解構】天地能量運作和諧，無顯著阻力與摩擦。適合順勢而為，按部就班推進各項既定計劃。"
+  }
+}
